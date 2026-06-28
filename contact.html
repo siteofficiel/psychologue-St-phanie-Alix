@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact • Stéphanie ALIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
+        .nav-glass { background: rgba(248, 244, 239, 0.92); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-[#f8f4ef] text-[#3f4f4a]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-[#0f3c35] rounded-2xl flex items-center justify-center"><span class="text-white font-bold text-3xl">SA</span></div>
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div></div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
+                    <a href="index.html" class="text-[#3f4f4a]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3f4f4a]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3f4f4a]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3f4f4a]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3f4f4a]">Localisation</a>
+                    <a href="blog.html" class="text-[#3f4f4a]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3f4f4a]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3f4f4a]">Contact</a>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#0f3c35] text-white rounded-[2.25rem]">Prendre RDV</a>
+                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#d4c9b8] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
+        <div class="grid md:grid-cols-12 gap-8">
+            <div class="md:col-span-5">
+                <div class="section-label text-[#5f7a6f]">OÙ ME TROUVER</div>
+                <h1 class="heading-serif text-[#0f3c35] text-5xl tracking-tighter mt-2">Stéphanie ALIX</h1>
+                
+                <div class="mt-6 text-sm leading-relaxed">
+                    ZA Les Alleux – Bâtiment La Garaye<br>
+                    3, Boulevard du Petit Paris<br>
+                    <span class="font-semibold">22100 DINAN-TADEN</span>
+                </div>
+                
+                <div class="mt-8 space-y-3">
+                    <a href="tel:0256385005" class="flex items-center gap-2 font-semibold text-xl"><i class="fas fa-phone"></i> 02 56 38 50 05</a>
+                    <a href="mailto:alixstephanie@sfr.fr" class="flex items-center gap-2 font-semibold">alixstephanie@sfr.fr</a>
+                </div>
+                
+                <div class="mt-8 text-xs">
+                    N° ADELI : 22 93 0383 9<br>
+                    Siret : 531 644 136 00016
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 bg-white border border-[#d4c9b8] rounded-3xl p-8">
+                <div class="font-semibold mb-3">Envoyez-moi un message</div>
+                <form id="contact-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="nom" placeholder="Votre nom" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="email" id="email" placeholder="Votre email" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="tel" id="tel" placeholder="Téléphone" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="text" id="objet" placeholder="Objet" class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                    </div>
+                    <textarea id="message" rows="4" placeholder="Votre message..." required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2.25rem] w-full"></textarea>
+                    
+                    <button type="submit" class="px-8 py-3 bg-[#0f3c35] hover:bg-[#0a2c28] text-white font-semibold rounded-[3rem]">
+                        Envoyer mon message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#0f3c35] text-white/80">
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
+    </footer>
+
+    <div id="breathing-modal" onclick="hideBreathingModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-[330px] mx-3 rounded-[3rem] p-7">
+            <div class="flex justify-between mb-4">
+                <div class="font-semibold">Pause respiration 4-7-8</div>
+                <button onclick="hideBreathingModal()" class="text-2xl">×</button>
+            </div>
+            <div class="flex flex-col items-center py-5">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                    <div class="text-center"><div id="breath-text" class="font-medium text-xl">Inspirez</div><div id="breath-count" class="text-xs">4s</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function initContactForm() {
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const original = btn.innerHTML;
+                btn.innerHTML = 'Envoi en cours...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'Message envoyé ✓';
+                    btn.style.backgroundColor = '#2c4d47';
+                    setTimeout(() => {
+                        form.reset();
+                        btn.innerHTML = original;
+                        btn.style.backgroundColor = '';
+                        btn.disabled = false;
+                        const toast = document.createElement('div');
+                        toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#0f3c35] text-white px-6 py-3 rounded-[3rem] text-sm flex items-center';
+                        toast.innerHTML = 'Merci ! Je vous répondrai très prochainement.';
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 3200);
+                    }, 1700);
+                }, 1100);
+            });
+        }
+        
+        let breathingInterval = null;
+        function showBreathingModal() {
+            document.getElementById('breathing-modal').classList.remove('hidden');
+            document.getElementById('breathing-modal').classList.add('flex');
+        }
+        function hideBreathingModal() {
+            document.getElementById('breathing-modal').classList.add('hidden');
+            document.getElementById('breathing-modal').classList.remove('flex');
+            if (breathingInterval) clearInterval(breathingInterval);
+        }
+        function startBreathing() {
+            const circle = document.getElementById('breath-circle');
+            const text = document.getElementById('breath-text');
+            const count = document.getElementById('breath-count');
+            if (breathingInterval) clearInterval(breathingInterval);
+            let phase = 0, seconds = 4;
+            circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
+            circle.style.transform = 'scale(1.55)';
+            text.textContent = 'Inspirez';
+            count.textContent = '4s';
+            breathingInterval = setInterval(() => {
+                seconds--;
+                if (seconds <= 0) {
+                    phase++;
+                    seconds = (phase === 1) ? 7 : (phase === 2) ? 8 : 4;
+                    if (phase === 1) { text.textContent = 'Retenez'; count.textContent = '7s'; }
+                    else if (phase === 2) { circle.style.transition = 'transform 8s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(0.75)'; text.textContent = 'Expirez'; count.textContent = '8s'; }
+                    else { phase = 0; circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(1.55)'; text.textContent = 'Inspirez'; count.textContent = '4s'; }
+                } else { count.textContent = seconds + 's'; }
+                if (phase > 6) { clearInterval(breathingInterval); text.textContent = 'Terminé'; setTimeout(() => { text.textContent = 'Inspirez'; count.textContent = '4s'; circle.style.transform = 'scale(1)'; }, 1600); }
+            }, 1000);
+        }
+        
+        window.onload = function() {
+            initContactForm();
+        }
+    </script>
+</body>
+</html>

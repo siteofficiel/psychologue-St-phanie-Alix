@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liens utiles • Stéphanie ALIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
+        .nav-glass { background: rgba(248, 244, 239, 0.92); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-[#f8f4ef] text-[#3f4f4a]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-[#0f3c35] rounded-2xl flex items-center justify-center"><span class="text-white font-bold text-3xl">SA</span></div>
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div></div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
+                    <a href="index.html" class="text-[#3f4f4a]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3f4f4a]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3f4f4a]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3f4f4a]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3f4f4a]">Localisation</a>
+                    <a href="blog.html" class="text-[#3f4f4a]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3f4f4a]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3f4f4a]">Contact</a>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#0f3c35] text-white rounded-[2.25rem]">Prendre RDV</a>
+                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#d4c9b8] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
+        <h1 class="heading-serif text-[#0f3c35] text-5xl tracking-tighter">Les liens utiles</h1>
+        <p class="mt-2 max-w-md">Ressources officielles et locales qui peuvent vous être utiles.</p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <a href="https://sante.gouv.fr/prevention-en-sante/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Ministère de la santé et de la prévention</span>
+            </a>
+            <a href="https://www.ameli.fr/cotes-d-armor/assure" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>L’Assurance Maladie – AMELI 22</span>
+            </a>
+            <a href="https://www.drogues-info-service.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Drogues info service</span>
+            </a>
+            <a href="https://www.e-cancer.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Institut national du cancer</span>
+            </a>
+            <a href="https://arretonslesviolences.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Arrêtons les violences</span>
+            </a>
+            <a href="https://www.dinan.fr/vivre-a-dinan/etre-accompagne/le-ccas/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>CCAS de Dinan</span>
+            </a>
+            <a href="https://www.dinan-agglomeration.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>CIAS Dinan Agglo</span>
+            </a>
+            <a href="https://www.ml-paysdedinan.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Mission Locale Pays de Dinan</span>
+            </a>
+            <a href="https://www.caf.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>CAF Côtes d’Armor</span>
+            </a>
+            <a href="https://www.gendarmerie.interieur.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>Gendarmerie de Dinan</span>
+            </a>
+            <a href="http://www.steredenn.org/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>STEREDENN</span>
+            </a>
+            <a href="https://www.nozdeiz.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
+                <i class="fas fa-globe text-[#5f7a6f]"></i>
+                <span>NOZ DEIZ</span>
+            </a>
+            
+            <div class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3">
+                <i class="fas fa-phone text-[#5f7a6f]"></i>
+                <div>
+                    <div class="font-medium">Soutien Harcèlement</div>
+                    <div class="text-2xl font-bold">3018</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#0f3c35] text-white/80">
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
+    </footer>
+
+    <div id="breathing-modal" onclick="hideBreathingModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-[330px] mx-3 rounded-[3rem] p-7">
+            <div class="flex justify-between mb-4">
+                <div class="font-semibold">Pause respiration 4-7-8</div>
+                <button onclick="hideBreathingModal()" class="text-2xl">×</button>
+            </div>
+            <div class="flex flex-col items-center py-5">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                    <div class="text-center"><div id="breath-text" class="font-medium text-xl">Inspirez</div><div id="breath-count" class="text-xs">4s</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let breathingInterval = null;
+        function showBreathingModal() {
+            document.getElementById('breathing-modal').classList.remove('hidden');
+            document.getElementById('breathing-modal').classList.add('flex');
+        }
+        function hideBreathingModal() {
+            document.getElementById('breathing-modal').classList.add('hidden');
+            document.getElementById('breathing-modal').classList.remove('flex');
+            if (breathingInterval) clearInterval(breathingInterval);
+        }
+        function startBreathing() {
+            const circle = document.getElementById('breath-circle');
+            const text = document.getElementById('breath-text');
+            const count = document.getElementById('breath-count');
+            if (breathingInterval) clearInterval(breathingInterval);
+            let phase = 0, seconds = 4;
+            circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
+            circle.style.transform = 'scale(1.55)';
+            text.textContent = 'Inspirez';
+            count.textContent = '4s';
+            breathingInterval = setInterval(() => {
+                seconds--;
+                if (seconds <= 0) {
+                    phase++;
+                    seconds = (phase === 1) ? 7 : (phase === 2) ? 8 : 4;
+                    if (phase === 1) { text.textContent = 'Retenez'; count.textContent = '7s'; }
+                    else if (phase === 2) { circle.style.transition = 'transform 8s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(0.75)'; text.textContent = 'Expirez'; count.textContent = '8s'; }
+                    else { phase = 0; circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(1.55)'; text.textContent = 'Inspirez'; count.textContent = '4s'; }
+                } else { count.textContent = seconds + 's'; }
+                if (phase > 6) { clearInterval(breathingInterval); text.textContent = 'Terminé'; setTimeout(() => { text.textContent = 'Inspirez'; count.textContent = '4s'; circle.style.transform = 'scale(1)'; }, 1600); }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

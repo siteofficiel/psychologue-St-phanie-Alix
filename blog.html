@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Blog • Stéphanie ALIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
+        .nav-glass { background: rgba(248, 244, 239, 0.92); backdrop-filter: blur(20px); }
+        .blog-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(15 60 53 / 0.1); }
+    </style>
+</head>
+<body class="bg-[#f8f4ef] text-[#3f4f4a]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+            <div class="py-5 flex items-center justify-between">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-[#0f3c35] rounded-2xl flex items-center justify-center"><span class="text-white font-bold text-3xl">SA</span></div>
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div></div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
+                    <a href="index.html" class="text-[#3f4f4a]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3f4f4a]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3f4f4a]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3f4f4a]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3f4f4a]">Localisation</a>
+                    <a href="blog.html" class="text-[#3f4f4a]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3f4f4a]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3f4f4a]">Contact</a>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#0f3c35] text-white rounded-[2.25rem]">Prendre RDV</a>
+                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#d4c9b8] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <div class="section-label text-[#5f7a6f]">RÉFLEXIONS &amp; TÉMOIGNAGES</div>
+                <h1 class="heading-serif text-[#0f3c35] text-5xl tracking-tighter">Le blog</h1>
+            </div>
+            <div class="text-xs px-4 py-1 bg-[#f1ede6] rounded-full flex items-center gap-2">
+                <i class="fas fa-lock"></i> <span>Témoignages anonymes</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Article cards with images -->
+            <div onclick="openArticle(0)" class="blog-card cursor-pointer border border-[#d4c9b8] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1005/600/220" alt="Anxiété" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e8e0d4] text-xs rounded-full">Anxiété</span>
+                        <span class="text-xs text-[#5f7a6f]">12 jan 2026</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« J’ai enfin cessé de me battre contre mon anxiété »</h3>
+                    <p class="mt-2 text-sm text-[#5f7a6f]">Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#5f7a6f]">7 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="openArticle(1)" class="blog-card cursor-pointer border border-[#d4c9b8] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1016/600/220" alt="Deuil" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e8e0d4] text-xs rounded-full">Deuil</span>
+                        <span class="text-xs text-[#5f7a6f]">3 déc 2025</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« Le deuil ne disparaît pas, il change de forme »</h3>
+                    <p class="mt-2 text-sm text-[#5f7a6f]">Thomas, 52 ans, partage son chemin après la perte de sa mère.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#5f7a6f]">9 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="openArticle(2)" class="blog-card cursor-pointer border border-[#d4c9b8] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1011/600/220" alt="Adolescents" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e8e0d4] text-xs rounded-full">Adolescents</span>
+                        <span class="text-xs text-[#5f7a6f]">21 nov 2025</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« Mon ado ne parle plus à la maison »</h3>
+                    <p class="mt-2 text-sm text-[#5f7a6f]">Le témoignage d’une mère et de sa fille de 15 ans.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#5f7a6f]">6 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="article-modal" onclick="closeArticleModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200] p-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-2xl rounded-3xl max-h-[90vh] overflow-auto">
+            <div class="px-8 pt-6 pb-4 flex justify-between border-b">
+                <div>
+                    <div id="modal-category" class="px-3 py-1 bg-[#e8e0d4] text-xs rounded-full inline-block"></div>
+                    <div id="modal-date" class="text-xs text-[#5f7a6f] mt-1"></div>
+                </div>
+                <button onclick="closeArticleModal()" class="text-3xl text-[#5f7a6f]">×</button>
+            </div>
+            <div class="px-8 pt-5 pb-8">
+                <h2 id="modal-title" class="heading-serif text-3xl"></h2>
+                <div id="modal-content" class="mt-6 text-[1.02rem]"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#0f3c35] text-white/80">
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
+    </footer>
+
+    <div id="breathing-modal" onclick="hideBreathingModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-[330px] mx-3 rounded-[3rem] p-7">
+            <div class="flex justify-between mb-4">
+                <div class="font-semibold">Pause respiration 4-7-8</div>
+                <button onclick="hideBreathingModal()" class="text-2xl">×</button>
+            </div>
+            <div class="flex flex-col items-center py-5">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                    <div class="text-center"><div id="breath-text" class="font-medium text-xl">Inspirez</div><div id="breath-count" class="text-xs">4s</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const articles = [
+            {
+                category: "Anxiété",
+                date: "12 janvier 2026 • 7 min",
+                title: "« J’ai enfin cessé de me battre contre mon anxiété »",
+                content: `<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class="mt-4">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class="mt-4">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>`
+            },
+            {
+                category: "Deuil",
+                date: "3 décembre 2025 • 9 min",
+                title: "« Le deuil ne disparaît pas, il change de forme »",
+                content: `<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class="mt-4">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class="mt-4">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>`
+            },
+            {
+                category: "Adolescents",
+                date: "21 novembre 2025 • 6 min",
+                title: "« Mon ado ne parle plus à la maison »",
+                content: `<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class="mt-4">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>`
+            }
+        ];
+
+        function openArticle(index) {
+            const article = articles[index];
+            const modal = document.getElementById('article-modal');
+            document.getElementById('modal-category').innerHTML = article.category;
+            document.getElementById('modal-date').innerHTML = article.date;
+            document.getElementById('modal-title').innerHTML = article.title;
+            document.getElementById('modal-content').innerHTML = article.content;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('article-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        let breathingInterval = null;
+        function showBreathingModal() {
+            document.getElementById('breathing-modal').classList.remove('hidden');
+            document.getElementById('breathing-modal').classList.add('flex');
+        }
+        function hideBreathingModal() {
+            document.getElementById('breathing-modal').classList.add('hidden');
+            document.getElementById('breathing-modal').classList.remove('flex');
+            if (breathingInterval) clearInterval(breathingInterval);
+        }
+        function startBreathing() {
+            const circle = document.getElementById('breath-circle');
+            const text = document.getElementById('breath-text');
+            const count = document.getElementById('breath-count');
+            if (breathingInterval) clearInterval(breathingInterval);
+            let phase = 0, seconds = 4;
+            circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
+            circle.style.transform = 'scale(1.55)';
+            text.textContent = 'Inspirez';
+            count.textContent = '4s';
+            breathingInterval = setInterval(() => {
+                seconds--;
+                if (seconds <= 0) {
+                    phase++;
+                    seconds = (phase === 1) ? 7 : (phase === 2) ? 8 : 4;
+                    if (phase === 1) { text.textContent = 'Retenez'; count.textContent = '7s'; }
+                    else if (phase === 2) { circle.style.transition = 'transform 8s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(0.75)'; text.textContent = 'Expirez'; count.textContent = '8s'; }
+                    else { phase = 0; circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(1.55)'; text.textContent = 'Inspirez'; count.textContent = '4s'; }
+                } else { count.textContent = seconds + 's'; }
+                if (phase > 6) { clearInterval(breathingInterval); text.textContent = 'Terminé'; setTimeout(() => { text.textContent = 'Inspirez'; count.textContent = '4s'; circle.style.transform = 'scale(1)'; }, 1600); }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

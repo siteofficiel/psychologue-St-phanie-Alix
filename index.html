@@ -3,50 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stéphanie ALIX • Psychologue Clinicienne • Dinan</title>
+    <title>Honoraires et Horaires • Stéphanie ALIX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
-        .nav-glass { background: rgba(246, 242, 252, 0.95); backdrop-filter: blur(20px); }
-        
-        /* Hamburger animation */
-        .hamburger {
-            width: 28px;
-            height: 20px;
-            position: relative;
-            cursor: pointer;
-        }
-        .hamburger span {
-            display: block;
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: #3a2e55;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2) { top: 9px; }
-        .hamburger span:nth-child(3) { top: 18px; }
-        
-        .hamburger.open span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 9px;
-        }
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.open span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 9px;
-        }
-
-        .mobile-menu {
-            transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-        }
+        .nav-glass { background: rgba(246, 242, 252, 0.92); backdrop-filter: blur(20px); }
 
         /* === Navigation interactive (page active mise en évidence) === */
         .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
@@ -73,265 +37,104 @@
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
-    <!-- NAV -->
     <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <div class="py-5 flex items-center justify-between">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-x-3">
-                    <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-11 h-11 object-contain">
-                    <div>
-                        <div class="font-semibold text-xl tracking-tight">Stéphanie ALIX</div>
-                        <div class="text-[10px] font-medium text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div>
-                    </div>
+                <a href="index.html" class="group flex items-center gap-x-3">
+                    <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105 group-hover:rotate-6">
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div></div>
                 </a>
-
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
-                    <a href="index.html" class="hover:text-[#8a73c4]">Accueil</a>
-                    <a href="le-psychologue.html" class="hover:text-[#8a73c4]">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="hover:text-[#8a73c4]">Prises en charge</a>
-                    <a href="honoraires.html" class="hover:text-[#8a73c4]">Honoraires</a>
-                    <a href="localisation.html" class="hover:text-[#8a73c4]">Localisation</a>
-                    <a href="blog.html" class="hover:text-[#8a73c4]">Blog</a>
-                    <a href="liens-utiles.html" class="hover:text-[#8a73c4]">Liens utiles</a>
-                    <a href="contact.html" class="hover:text-[#8a73c4]">Contact</a>
+                    <a href="index.html" class="text-[#3a2e55]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3a2e55]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3a2e55]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3a2e55]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3a2e55]">Localisation</a>
+                    <a href="blog.html" class="text-[#3a2e55]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3a2e55]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3a2e55]">Contact</a>
                 </div>
-
                 <div class="flex items-center gap-x-3">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="hidden sm:inline-flex items-center px-5 py-2 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2.25rem]">
-                        Prendre RDV
-                    </a>
-
-                    <!-- Improved Hamburger -->
-                    <button id="mobile-btn" class="md:hidden flex items-center justify-center w-10 h-10">
-                        <div class="hamburger" id="hamburger-icon">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Overlay (Improved) -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/60 z-50">
-            <div class="mobile-menu bg-white w-full max-w-[320px] h-full ml-auto shadow-2xl p-6 flex flex-col">
-                <!-- Close button -->
-                <div class="flex justify-end mb-6">
-                    <button id="close-menu" class="text-3xl text-[#8a73c4]">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <div class="flex flex-col text-lg font-medium space-y-1">
-                    <a href="index.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Accueil</a>
-                    <a href="le-psychologue.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Prises en charge</a>
-                    <a href="honoraires.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Honoraires</a>
-                    <a href="localisation.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Localisation</a>
-                    <a href="blog.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Blog</a>
-                    <a href="liens-utiles.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Liens utiles</a>
-                    <a href="contact.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Contact</a>
-                </div>
-
-                <div class="mt-auto pt-8 border-t">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="block w-full text-center py-3.5 bg-[#6b4fa0] text-white font-semibold rounded-[2.25rem]">
-                        Prendre rendez-vous
-                    </a>
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#6b4fa0] text-white rounded-[2.25rem]">Prendre RDV</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero-bg h-[620px] flex items-center text-white" 
-            style="background: linear-gradient(rgba(107, 79, 160, 0.55), rgba(107, 79, 160, 0.45)), url('https://picsum.photos/id/1018/2000/1200'); background-size: cover; background-position: center;">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
-            <div class="max-w-2xl">
-                <div class="inline-flex items-center px-4 py-1 rounded-full bg-white/20 text-sm mb-5">
-                    <i class="fas fa-map-marker-alt mr-2"></i> Taden • Dinan (22)
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
+        <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter">Honoraires et Horaires</h1>
+        
+        <div class="grid md:grid-cols-12 gap-6 mt-10">
+            <!-- Horaires -->
+            <div class="md:col-span-5 bg-white border border-[#ddd0f0] rounded-3xl p-8">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-3xl text-[#8a73c4]"></i>
+                    <h3 class="font-semibold text-2xl">Horaires</h3>
                 </div>
-                
-                <h1 class="heading-serif text-7xl lg:text-8xl tracking-[-4px] leading-none">Stéphanie<br>ALIX</h1>
-                <p class="mt-3 text-3xl font-light">Psychologue clinicienne<br>Psychothérapeute</p>
-                
-                <div class="mt-8 flex flex-wrap gap-4">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" 
-                       class="px-8 py-4 bg-white text-[#6b4fa0] font-semibold rounded-[3rem] text-lg">Prendre rendez-vous</a>
-                    <a href="le-psychologue.html" 
-                       class="px-8 py-4 border border-white/70 hover:bg-white/10 text-white font-semibold rounded-[3rem] text-lg">Comprendre le métier</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Quick content -->
-    <section class="max-w-screen-2xl mx-auto px-6 md:px-8 py-14">
-        <div class="grid md:grid-cols-3 gap-6">
-            <a href="le-psychologue.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Qu’est-ce qu’un psychologue ?</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Comprendre les différentes professions</div>
-            </a>
-            <a href="prises-en-charge.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Prises en charge</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Pour qui et comment ?</div>
-            </a>
-            <a href="blog.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Le blog</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Témoignages &amp; réflexions</div>
-            </a>
-        </div>
-    </section>
-
-    <footer class="bg-[#6b4fa0] text-white/80">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-9 text-sm flex flex-col md:flex-row justify-between gap-y-2">
-            <div>© 2026 Stéphanie ALIX — Psychologue clinicienne</div>
-            <div class="flex gap-x-6">
-                <a href="liens-utiles.html" class="hover:text-white">Liens utiles</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Breathing Modal -->
-    <div id="breathing-modal" onclick="hideBreathingModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200]">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-[330px] mx-3 rounded-[3rem] p-7">
-            <div class="flex justify-between mb-4">
-                <div class="font-semibold">Pause respiration 4-7-8</div>
-                <button onclick="hideBreathingModal()" class="text-2xl">×</button>
-            </div>
-            <div class="flex flex-col items-center py-5">
-                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#6b4fa0] rounded-full cursor-pointer flex items-center justify-center">
-                    <div class="text-center">
-                        <div id="breath-text" class="font-medium text-xl text-[#6b4fa0]">Inspirez</div>
-                        <div id="breath-count" class="text-xs text-[#8a73c4]">4s</div>
+                <div class="mt-6">
+                    <p class="font-medium">Consultations uniquement sur rendez-vous.</p>
+                    <div class="mt-5">
+                        <div class="text-sm text-[#8a73c4]">Le cabinet est ouvert :</div>
+                        <div class="mt-1 text-xl font-semibold">Lundi, Mardi, Jeudi et Vendredi<br>de 09H30 à 17H00</div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="font-medium">Pour fixer un rendez-vous :</div>
+                        <a href="tel:0256385005" class="text-2xl font-semibold flex items-center gap-2 mt-1">02 56 38 50 05</a>
+                        <div class="text-xs mt-1">ou cliquez sur le bouton « Prendre un rendez-vous »</div>
+                    </div>
+                    <div class="mt-6 text-xs bg-[#efeafa] p-3 rounded-2xl">
+                        Merci de me prévenir 24H à l’avance si vous êtes dans l’impossibilité de venir au rendez-vous fixé.
                     </div>
                 </div>
+            </div>
+            
+            <!-- Tarifs -->
+            <div class="md:col-span-7 bg-white border border-[#ddd0f0] rounded-3xl p-8">
+                <div>
+                    <div class="font-medium text-sm">Tarif de la consultation</div>
+                    <div class="flex items-baseline mt-1">
+                        <span class="text-[4rem] font-extrabold tracking-tighter">50</span>
+                        <span class="text-3xl font-medium">€</span>
+                    </div>
+                    <div class="text-sm text-[#8a73c4]">pris en charge par la Sécurité Sociale dans le cadre du dispositif Mon Soutien Psy</div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="font-medium text-sm">Modes de règlement acceptés :</div>
+                    <div class="flex gap-2 mt-3">
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Cartes bancaires</div>
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Espèces</div>
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Chèques</div>
+                    </div>
+                    <div class="mt-4 text-xs">
+                        « En ma qualité de Membre d’une Association de Gestion Agréée par l’Administration Fiscale, j’accepte le règlement des sommes dues par chèques libellés à mon nom. »
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t text-xs">
+                    <strong>Information :</strong> Les consultations ne sont pas prises en charge par la Sécurité Sociale. Certaines mutuelles et assurances remboursent une partie du prix. Renseignez-vous auprès de votre mutuelle.
+                </div>
+            </div>
+            
+            <!-- Mon Soutien Psy -->
+            <div class="md:col-span-12 bg-[#6b4fa0] text-white rounded-3xl p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-hand-holding-heart text-[#c8b9ec] text-3xl"></i>
+                    <h3 class="font-semibold text-2xl">Dispositif « Mon Soutien Psy »</h3>
+                </div>
+                <p class="max-w-2xl">En tant qu’adhérente au dispositif, la Sécurité Sociale peut prendre en charge tout ou partie de vos séances sous certaines conditions.</p>
+                <a href="https://www.ameli.fr/cotes-d-armor/assure/remboursements/rembourse/remboursement-seance-psychologue-mon-soutien-psy" target="_blank" class="mt-4 inline-flex px-5 py-2 bg-white/10 hover:bg-white/15 rounded-[3rem] text-sm font-semibold">Consulter les détails sur ameli.fr</a>
+                <div class="mt-4 text-xs">NB : Toute personne déjà suivie par un psychiatre ne peut prétendre à ce remboursement.</div>
             </div>
         </div>
     </div>
 
+    <footer class="bg-[#6b4fa0] text-white/80">
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
+    </footer>
+
+
     <script>
-        // Tailwind
-        function initTailwind() {
-            tailwind.config = { theme: { extend: { fontFamily: { 'serif': ['Playfair Display', 'Georgia', 'serif'] } } } };
-        }
-
-        // Improved Hamburger Menu
-        function initHamburger() {
-            const btn = document.getElementById('mobile-btn');
-            const menu = document.getElementById('mobile-menu');
-            const hamburger = document.getElementById('hamburger-icon');
-            const closeBtn = document.getElementById('close-menu');
-
-            if (!btn || !menu) return;
-
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                hamburger.classList.toggle('open');
-            });
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                });
-            }
-
-            // Close when clicking on links
-            const links = menu.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                });
-            });
-
-            // Close when clicking outside the menu panel
-            menu.addEventListener('click', (e) => {
-                if (e.target === menu) {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                }
-            });
-        }
-
-        // Breathing tool
-        let breathingInterval = null;
-        
-        function showBreathingModal() {
-            const modal = document.getElementById('breathing-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            resetBreathing();
-        }
-        
-        function hideBreathingModal() {
-            const modal = document.getElementById('breathing-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-            if (breathingInterval) clearInterval(breathingInterval);
-        }
-        
-        function resetBreathing() {
-            const circle = document.getElementById('breath-circle');
-            const text = document.getElementById('breath-text');
-            const count = document.getElementById('breath-count');
-            circle.style.transform = 'scale(1)';
-            circle.style.transition = 'transform 0.8s ease';
-            text.textContent = 'Inspirez';
-            count.textContent = '4 secondes';
-            circle.onclick = startBreathing;
-        }
-        
-        function startBreathing() {
-            const circle = document.getElementById('breath-circle');
-            const text = document.getElementById('breath-text');
-            const count = document.getElementById('breath-count');
-            if (breathingInterval) clearInterval(breathingInterval);
-            let phase = 0, seconds = 4;
-            circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
-            circle.style.transform = 'scale(1.55)';
-            text.textContent = 'Inspirez';
-            count.textContent = '4s';
-            breathingInterval = setInterval(() => {
-                seconds--;
-                if (seconds <= 0) {
-                    phase++;
-                    seconds = (phase === 1) ? 7 : (phase === 2) ? 8 : 4;
-                    if (phase === 1) { text.textContent = 'Retenez'; count.textContent = '7s'; }
-                    else if (phase === 2) { circle.style.transition = 'transform 8s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(0.75)'; text.textContent = 'Expirez'; count.textContent = '8s'; }
-                    else { phase = 0; circle.style.transition = 'transform 4s cubic-bezier(0.45, 0.05, 0.55, 0.95)'; circle.style.transform = 'scale(1.55)'; text.textContent = 'Inspirez'; count.textContent = '4s'; }
-                } else { count.textContent = seconds + 's'; }
-                if (phase > 6) { clearInterval(breathingInterval); text.textContent = 'Terminé'; setTimeout(resetBreathing, 1600); }
-            }, 1000);
-        }
-
-        function init() {
-            initTailwind();
-            initHamburger();
-            
-            // Keyboard support
-            document.addEventListener('keydown', function(e) {
-                if (e.key === "Escape") {
-                    const breathing = document.getElementById('breathing-modal');
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!breathing.classList.contains('hidden')) {
-                        hideBreathingModal();
-                    } else if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        const ham = document.getElementById('hamburger-icon');
-                        if (ham) ham.classList.remove('open');
-                    }
-                }
-            });
-        }
-        
-        window.onload = init;
     </script>
 
     <script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact • Stéphanie ALIX</title>
+    <title>Honoraires et Horaires • Stéphanie ALIX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -62,45 +62,69 @@
     </nav>
 
     <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
-        <div class="grid md:grid-cols-12 gap-8">
-            <div class="md:col-span-5">
-                <div class="section-label text-[#8a73c4]">OÙ ME TROUVER</div>
-                <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter mt-2">Stéphanie ALIX</h1>
-                
-                <div class="mt-6 text-sm leading-relaxed">
-                    ZA Les Alleux – Bâtiment La Garaye<br>
-                    3, Boulevard du Petit Paris<br>
-                    <span class="font-semibold">22100 DINAN-TADEN</span>
+        <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter">Honoraires et Horaires</h1>
+        
+        <div class="grid md:grid-cols-12 gap-6 mt-10">
+            <!-- Horaires -->
+            <div class="md:col-span-5 bg-white border border-[#ddd0f0] rounded-3xl p-8">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-3xl text-[#8a73c4]"></i>
+                    <h3 class="font-semibold text-2xl">Horaires</h3>
                 </div>
-                
-                <div class="mt-8 space-y-3">
-                    <a href="tel:0256385005" class="flex items-center gap-2 font-semibold text-xl"><i class="fas fa-phone"></i> 02 56 38 50 05</a>
-                    <a href="mailto:alixstephanie@sfr.fr" class="flex items-center gap-2 font-semibold">alixstephanie@sfr.fr</a>
-                </div>
-                
-                <div class="mt-8 text-xs">
-                    N° ADELI : 22 93 0383 9<br>
-                    Siret : 531 644 136 00016
+                <div class="mt-6">
+                    <p class="font-medium">Consultations uniquement sur rendez-vous.</p>
+                    <div class="mt-5">
+                        <div class="text-sm text-[#8a73c4]">Le cabinet est ouvert :</div>
+                        <div class="mt-1 text-xl font-semibold">Lundi, Mardi, Jeudi et Vendredi<br>de 09H30 à 17H00</div>
+                    </div>
+                    <div class="mt-8">
+                        <div class="font-medium">Pour fixer un rendez-vous :</div>
+                        <a href="tel:0256385005" class="text-2xl font-semibold flex items-center gap-2 mt-1">02 56 38 50 05</a>
+                        <div class="text-xs mt-1">ou cliquez sur le bouton « Prendre un rendez-vous »</div>
+                    </div>
+                    <div class="mt-6 text-xs bg-[#efeafa] p-3 rounded-2xl">
+                        Merci de me prévenir 24H à l’avance si vous êtes dans l’impossibilité de venir au rendez-vous fixé.
+                    </div>
                 </div>
             </div>
             
+            <!-- Tarifs -->
             <div class="md:col-span-7 bg-white border border-[#ddd0f0] rounded-3xl p-8">
-                <div class="font-semibold mb-3">Envoyez-moi un message</div>
-                <form id="contact-form" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="nom" placeholder="Votre nom" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
-                        <input type="email" id="email" placeholder="Votre email" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                <div>
+                    <div class="font-medium text-sm">Tarif de la consultation</div>
+                    <div class="flex items-baseline mt-1">
+                        <span class="text-[4rem] font-extrabold tracking-tighter">50</span>
+                        <span class="text-3xl font-medium">€</span>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="tel" id="tel" placeholder="Téléphone" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
-                        <input type="text" id="objet" placeholder="Objet" class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                    <div class="text-sm text-[#8a73c4]">pris en charge par la Sécurité Sociale dans le cadre du dispositif Mon Soutien Psy</div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="font-medium text-sm">Modes de règlement acceptés :</div>
+                    <div class="flex gap-2 mt-3">
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Cartes bancaires</div>
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Espèces</div>
+                        <div class="px-5 py-2 bg-[#f6f2fc] rounded-2xl text-sm">Chèques</div>
                     </div>
-                    <textarea id="message" rows="4" placeholder="Votre message..." required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2.25rem] w-full"></textarea>
-                    
-                    <button type="submit" class="px-8 py-3 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[3rem]">
-                        Envoyer mon message
-                    </button>
-                </form>
+                    <div class="mt-4 text-xs">
+                        « En ma qualité de Membre d’une Association de Gestion Agréée par l’Administration Fiscale, j’accepte le règlement des sommes dues par chèques libellés à mon nom. »
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-6 border-t text-xs">
+                    <strong>Information :</strong> Les consultations ne sont pas prises en charge par la Sécurité Sociale. Certaines mutuelles et assurances remboursent une partie du prix. Renseignez-vous auprès de votre mutuelle.
+                </div>
+            </div>
+            
+            <!-- Mon Soutien Psy -->
+            <div class="md:col-span-12 bg-[#6b4fa0] text-white rounded-3xl p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fas fa-hand-holding-heart text-[#c8b9ec] text-3xl"></i>
+                    <h3 class="font-semibold text-2xl">Dispositif « Mon Soutien Psy »</h3>
+                </div>
+                <p class="max-w-2xl">En tant qu’adhérente au dispositif, la Sécurité Sociale peut prendre en charge tout ou partie de vos séances sous certaines conditions.</p>
+                <a href="https://www.ameli.fr/cotes-d-armor/assure/remboursements/rembourse/remboursement-seance-psychologue-mon-soutien-psy" target="_blank" class="mt-4 inline-flex px-5 py-2 bg-white/10 hover:bg-white/15 rounded-[3rem] text-sm font-semibold">Consulter les détails sur ameli.fr</a>
+                <div class="mt-4 text-xs">NB : Toute personne déjà suivie par un psychiatre ne peut prétendre à ce remboursement.</div>
             </div>
         </div>
     </div>
@@ -111,33 +135,6 @@
 
 
     <script>
-        function initContactForm() {
-            const form = document.getElementById('contact-form');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const btn = form.querySelector('button');
-                const original = btn.innerHTML;
-                btn.innerHTML = 'Envoi en cours...';
-                btn.disabled = true;
-                
-                setTimeout(() => {
-                    btn.innerHTML = 'Message envoyé ✓';
-                    btn.style.backgroundColor = '#4a3a6e';
-                    setTimeout(() => {
-                        form.reset();
-                        btn.innerHTML = original;
-                        btn.style.backgroundColor = '';
-                        btn.disabled = false;
-                        const toast = document.createElement('div');
-                        toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#6b4fa0] text-white px-6 py-3 rounded-[3rem] text-sm flex items-center';
-                        toast.innerHTML = 'Merci ! Je vous répondrai très prochainement.';
-                        document.body.appendChild(toast);
-                        setTimeout(() => toast.remove(), 3200);
-                    }, 1700);
-                }, 1100);
-            });
-        }
-        
     </script>
 
     <script>

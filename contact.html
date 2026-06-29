@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Blog • Stéphanie ALIX</title>
+    <title>Contact • Stéphanie ALIX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -11,8 +11,6 @@
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
         .nav-glass { background: rgba(246, 242, 252, 0.92); backdrop-filter: blur(20px); }
-        .blog-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(15 60 53 / 0.1); }
 
         /* === Navigation interactive (page active mise en évidence) === */
         .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
@@ -64,81 +62,45 @@
     </nav>
 
     <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
-        <div class="flex justify-between items-end mb-8">
-            <div>
-                <div class="section-label text-[#8a73c4]">RÉFLEXIONS &amp; TÉMOIGNAGES</div>
-                <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter">Le blog</h1>
-            </div>
-            <div class="text-xs px-4 py-1 bg-[#efeafa] rounded-full flex items-center gap-2">
-                <i class="fas fa-lock"></i> <span>Témoignages anonymes</span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Article cards with images -->
-            <div onclick="openArticle(0)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1005/600/220" alt="Anxiété" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Anxiété</span>
-                        <span class="text-xs text-[#8a73c4]">12 jan 2026</span>
-                    </div>
-                    <h3 class="font-semibold mt-3 text-xl">« J’ai enfin cessé de me battre contre mon anxiété »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">7 min</span>
-                    </div>
+        <div class="grid md:grid-cols-12 gap-8">
+            <div class="md:col-span-5">
+                <div class="section-label text-[#8a73c4]">OÙ ME TROUVER</div>
+                <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter mt-2">Stéphanie ALIX</h1>
+                
+                <div class="mt-6 text-sm leading-relaxed">
+                    ZA Les Alleux – Bâtiment La Garaye<br>
+                    3, Boulevard du Petit Paris<br>
+                    <span class="font-semibold">22100 DINAN-TADEN</span>
+                </div>
+                
+                <div class="mt-8 space-y-3">
+                    <a href="tel:0256385005" class="flex items-center gap-2 font-semibold text-xl"><i class="fas fa-phone"></i> 02 56 38 50 05</a>
+                    <a href="mailto:alixstephanie@sfr.fr" class="flex items-center gap-2 font-semibold">alixstephanie@sfr.fr</a>
+                </div>
+                
+                <div class="mt-8 text-xs">
+                    N° ADELI : 22 93 0383 9<br>
+                    Siret : 531 644 136 00016
                 </div>
             </div>
-
-            <div onclick="openArticle(1)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1016/600/220" alt="Deuil" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Deuil</span>
-                        <span class="text-xs text-[#8a73c4]">3 déc 2025</span>
+            
+            <div class="md:col-span-7 bg-white border border-[#ddd0f0] rounded-3xl p-8">
+                <div class="font-semibold mb-3">Envoyez-moi un message</div>
+                <form id="contact-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="nom" placeholder="Votre nom" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="email" id="email" placeholder="Votre email" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
                     </div>
-                    <h3 class="font-semibold mt-3 text-xl">« Le deuil ne disparaît pas, il change de forme »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Thomas, 52 ans, partage son chemin après la perte de sa mère.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">9 min</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="tel" id="tel" placeholder="Téléphone" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="text" id="objet" placeholder="Objet" class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
                     </div>
-                </div>
-            </div>
-
-            <div onclick="openArticle(2)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1011/600/220" alt="Adolescents" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Adolescents</span>
-                        <span class="text-xs text-[#8a73c4]">21 nov 2025</span>
-                    </div>
-                    <h3 class="font-semibold mt-3 text-xl">« Mon ado ne parle plus à la maison »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Le témoignage d’une mère et de sa fille de 15 ans.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">6 min</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Article Modal -->
-    <div id="article-modal" onclick="closeArticleModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200] p-4">
-        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-2xl rounded-3xl max-h-[90vh] overflow-auto">
-            <div class="px-8 pt-6 pb-4 flex justify-between border-b">
-                <div>
-                    <div id="modal-category" class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full inline-block"></div>
-                    <div id="modal-date" class="text-xs text-[#8a73c4] mt-1"></div>
-                </div>
-                <button onclick="closeArticleModal()" class="text-3xl text-[#8a73c4]">×</button>
-            </div>
-            <div class="px-8 pt-5 pb-8">
-                <h2 id="modal-title" class="heading-serif text-3xl"></h2>
-                <div id="modal-content" class="mt-6 text-[1.02rem]"></div>
+                    <textarea id="message" rows="4" placeholder="Votre message..." required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2.25rem] w-full"></textarea>
+                    
+                    <button type="submit" class="px-8 py-3 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[3rem]">
+                        Envoyer mon message
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -149,44 +111,33 @@
 
 
     <script>
-        const articles = [
-            {
-                category: "Anxiété",
-                date: "12 janvier 2026 • 7 min",
-                title: "« J’ai enfin cessé de me battre contre mon anxiété »",
-                content: `<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class="mt-4">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class="mt-4">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>`
-            },
-            {
-                category: "Deuil",
-                date: "3 décembre 2025 • 9 min",
-                title: "« Le deuil ne disparaît pas, il change de forme »",
-                content: `<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class="mt-4">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class="mt-4">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>`
-            },
-            {
-                category: "Adolescents",
-                date: "21 novembre 2025 • 6 min",
-                title: "« Mon ado ne parle plus à la maison »",
-                content: `<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class="mt-4">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>`
-            }
-        ];
-
-        function openArticle(index) {
-            const article = articles[index];
-            const modal = document.getElementById('article-modal');
-            document.getElementById('modal-category').innerHTML = article.category;
-            document.getElementById('modal-date').innerHTML = article.date;
-            document.getElementById('modal-title').innerHTML = article.title;
-            document.getElementById('modal-content').innerHTML = article.content;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+        function initContactForm() {
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const original = btn.innerHTML;
+                btn.innerHTML = 'Envoi en cours...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'Message envoyé ✓';
+                    btn.style.backgroundColor = '#4a3a6e';
+                    setTimeout(() => {
+                        form.reset();
+                        btn.innerHTML = original;
+                        btn.style.backgroundColor = '';
+                        btn.disabled = false;
+                        const toast = document.createElement('div');
+                        toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#6b4fa0] text-white px-6 py-3 rounded-[3rem] text-sm flex items-center';
+                        toast.innerHTML = 'Merci ! Je vous répondrai très prochainement.';
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 3200);
+                    }, 1700);
+                }, 1100);
+            });
         }
-
-        function closeArticleModal() {
-            const modal = document.getElementById('article-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-
+        
     </script>
 
     <script>

@@ -10,30 +10,53 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
-        .nav-glass { background: rgba(248, 244, 239, 0.92); backdrop-filter: blur(20px); }
+        .nav-glass { background: rgba(246, 242, 252, 0.92); backdrop-filter: blur(20px); }
+
+        /* === Navigation interactive (page active mise en évidence) === */
+        .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
+        .nav-link::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+            height: 2px; background: #6b4fa0; border-radius: 2px;
+            transform: scaleX(0); transform-origin: center;
+            transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.nav-active { color: #6b4fa0; font-weight: 600; }
+        .nav-link.nav-active::after { transform: scaleX(1); }
+        .nav-link.nav-active::before {
+            content: ''; position: absolute; left: 50%; top: -10px;
+            width: 5px; height: 5px; margin-left: -2.5px; border-radius: 9999px;
+            background: #6b4fa0;
+        }
+        /* Mobile : page active */
+        .mnav-link { transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
+        .mnav-link.nav-active {
+            background: #efeafa; color: #6b4fa0; font-weight: 600;
+            box-shadow: inset 3px 0 0 #6b4fa0;
+        }
     </style>
 </head>
-<body class="bg-[#f8f4ef] text-[#3f4f4a]">
-    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+<body class="bg-[#f6f2fc] text-[#3a2e55]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <div class="py-5 flex items-center justify-between">
                 <a href="index.html" class="flex items-center gap-x-3">
                     <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-11 h-11 object-contain">
-                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div></div>
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div></div>
                 </a>
                 <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
-                    <a href="index.html" class="text-[#3f4f4a]">Accueil</a>
-                    <a href="le-psychologue.html" class="text-[#3f4f4a]">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="text-[#3f4f4a]">Prises en charge</a>
-                    <a href="honoraires.html" class="text-[#3f4f4a]">Honoraires</a>
-                    <a href="localisation.html" class="text-[#3f4f4a]">Localisation</a>
-                    <a href="blog.html" class="text-[#3f4f4a]">Blog</a>
-                    <a href="liens-utiles.html" class="text-[#3f4f4a]">Liens utiles</a>
-                    <a href="contact.html" class="text-[#3f4f4a]">Contact</a>
+                    <a href="index.html" class="text-[#3a2e55]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3a2e55]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3a2e55]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3a2e55]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3a2e55]">Localisation</a>
+                    <a href="blog.html" class="text-[#3a2e55]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3a2e55]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3a2e55]">Contact</a>
                 </div>
                 <div class="flex items-center gap-x-3">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#0f3c35] text-white rounded-[2.25rem]">Prendre RDV</a>
-                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#d4c9b8] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#6b4fa0] text-white rounded-[2.25rem]">Prendre RDV</a>
+                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#ddd0f0] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
                 </div>
             </div>
         </div>
@@ -42,8 +65,8 @@
     <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
         <div class="grid md:grid-cols-12 gap-8">
             <div class="md:col-span-5">
-                <div class="section-label text-[#5f7a6f]">OÙ ME TROUVER</div>
-                <h1 class="heading-serif text-[#0f3c35] text-5xl tracking-tighter mt-2">Stéphanie ALIX</h1>
+                <div class="section-label text-[#8a73c4]">OÙ ME TROUVER</div>
+                <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter mt-2">Stéphanie ALIX</h1>
                 
                 <div class="mt-6 text-sm leading-relaxed">
                     ZA Les Alleux – Bâtiment La Garaye<br>
@@ -62,20 +85,20 @@
                 </div>
             </div>
             
-            <div class="md:col-span-7 bg-white border border-[#d4c9b8] rounded-3xl p-8">
+            <div class="md:col-span-7 bg-white border border-[#ddd0f0] rounded-3xl p-8">
                 <div class="font-semibold mb-3">Envoyez-moi un message</div>
                 <form id="contact-form" class="space-y-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="nom" placeholder="Votre nom" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
-                        <input type="email" id="email" placeholder="Votre email" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="text" id="nom" placeholder="Votre nom" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="email" id="email" placeholder="Votre email" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="tel" id="tel" placeholder="Téléphone" required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
-                        <input type="text" id="objet" placeholder="Objet" class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="tel" id="tel" placeholder="Téléphone" required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
+                        <input type="text" id="objet" placeholder="Objet" class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2rem]">
                     </div>
-                    <textarea id="message" rows="4" placeholder="Votre message..." required class="border border-[#d4c9b8] bg-[#f8f4ef] px-4 py-3 text-sm rounded-[2.25rem] w-full"></textarea>
+                    <textarea id="message" rows="4" placeholder="Votre message..." required class="border border-[#ddd0f0] bg-[#f6f2fc] px-4 py-3 text-sm rounded-[2.25rem] w-full"></textarea>
                     
-                    <button type="submit" class="px-8 py-3 bg-[#0f3c35] hover:bg-[#0a2c28] text-white font-semibold rounded-[3rem]">
+                    <button type="submit" class="px-8 py-3 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[3rem]">
                         Envoyer mon message
                     </button>
                 </form>
@@ -83,7 +106,7 @@
         </div>
     </div>
 
-    <footer class="bg-[#0f3c35] text-white/80">
+    <footer class="bg-[#6b4fa0] text-white/80">
         <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
     </footer>
 
@@ -94,7 +117,7 @@
                 <button onclick="hideBreathingModal()" class="text-2xl">×</button>
             </div>
             <div class="flex flex-col items-center py-5">
-                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#6b4fa0] rounded-full cursor-pointer flex items-center justify-center">
                     <div class="text-center"><div id="breath-text" class="font-medium text-xl">Inspirez</div><div id="breath-count" class="text-xs">4s</div></div>
                 </div>
             </div>
@@ -113,14 +136,14 @@
                 
                 setTimeout(() => {
                     btn.innerHTML = 'Message envoyé ✓';
-                    btn.style.backgroundColor = '#2c4d47';
+                    btn.style.backgroundColor = '#4a3a6e';
                     setTimeout(() => {
                         form.reset();
                         btn.innerHTML = original;
                         btn.style.backgroundColor = '';
                         btn.disabled = false;
                         const toast = document.createElement('div');
-                        toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#0f3c35] text-white px-6 py-3 rounded-[3rem] text-sm flex items-center';
+                        toast.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#6b4fa0] text-white px-6 py-3 rounded-[3rem] text-sm flex items-center';
                         toast.innerHTML = 'Merci ! Je vous répondrai très prochainement.';
                         document.body.appendChild(toast);
                         setTimeout(() => toast.remove(), 3200);
@@ -165,6 +188,22 @@
         window.onload = function() {
             initContactForm();
         }
+    </script>
+
+    <script>
+    // Mise en évidence automatique de la page courante dans la navigation
+    document.addEventListener('DOMContentLoaded', function () {
+        var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav a[href$=".html"]').forEach(function (a) {
+            if (a.querySelector('img')) return; // ignore le lien du logo
+            var inMobile = !!a.closest('#mobile-menu');
+            a.classList.add(inMobile ? 'mnav-link' : 'nav-link');
+            if ((a.getAttribute('href') || '').toLowerCase() === current) {
+                a.classList.add('nav-active');
+                a.setAttribute('aria-current', 'page');
+            }
+        });
+    });
     </script>
 </body>
 </html>

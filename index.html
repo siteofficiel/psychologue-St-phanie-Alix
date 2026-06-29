@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
-        .nav-glass { background: rgba(248, 244, 239, 0.95); backdrop-filter: blur(20px); }
+        .nav-glass { background: rgba(246, 242, 252, 0.95); backdrop-filter: blur(20px); }
         
         /* Hamburger animation */
         .hamburger {
@@ -24,7 +24,7 @@
             position: absolute;
             height: 2px;
             width: 100%;
-            background: #3f4f4a;
+            background: #3a2e55;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -47,11 +47,34 @@
         .mobile-menu {
             transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
         }
+
+        /* === Navigation interactive (page active mise en évidence) === */
+        .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
+        .nav-link::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+            height: 2px; background: #6b4fa0; border-radius: 2px;
+            transform: scaleX(0); transform-origin: center;
+            transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.nav-active { color: #6b4fa0; font-weight: 600; }
+        .nav-link.nav-active::after { transform: scaleX(1); }
+        .nav-link.nav-active::before {
+            content: ''; position: absolute; left: 50%; top: -10px;
+            width: 5px; height: 5px; margin-left: -2.5px; border-radius: 9999px;
+            background: #6b4fa0;
+        }
+        /* Mobile : page active */
+        .mnav-link { transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
+        .mnav-link.nav-active {
+            background: #efeafa; color: #6b4fa0; font-weight: 600;
+            box-shadow: inset 3px 0 0 #6b4fa0;
+        }
     </style>
 </head>
-<body class="bg-[#f8f4ef] text-[#3f4f4a]">
+<body class="bg-[#f6f2fc] text-[#3a2e55]">
     <!-- NAV -->
-    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <div class="py-5 flex items-center justify-between">
                 <!-- Logo -->
@@ -59,25 +82,25 @@
                     <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-11 h-11 object-contain">
                     <div>
                         <div class="font-semibold text-xl tracking-tight">Stéphanie ALIX</div>
-                        <div class="text-[10px] font-medium text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div>
+                        <div class="text-[10px] font-medium text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div>
                     </div>
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
-                    <a href="index.html" class="hover:text-[#5f7a6f]">Accueil</a>
-                    <a href="le-psychologue.html" class="hover:text-[#5f7a6f]">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="hover:text-[#5f7a6f]">Prises en charge</a>
-                    <a href="honoraires.html" class="hover:text-[#5f7a6f]">Honoraires</a>
-                    <a href="localisation.html" class="hover:text-[#5f7a6f]">Localisation</a>
-                    <a href="blog.html" class="hover:text-[#5f7a6f]">Blog</a>
-                    <a href="liens-utiles.html" class="hover:text-[#5f7a6f]">Liens utiles</a>
-                    <a href="contact.html" class="hover:text-[#5f7a6f]">Contact</a>
+                    <a href="index.html" class="hover:text-[#8a73c4]">Accueil</a>
+                    <a href="le-psychologue.html" class="hover:text-[#8a73c4]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="hover:text-[#8a73c4]">Prises en charge</a>
+                    <a href="honoraires.html" class="hover:text-[#8a73c4]">Honoraires</a>
+                    <a href="localisation.html" class="hover:text-[#8a73c4]">Localisation</a>
+                    <a href="blog.html" class="hover:text-[#8a73c4]">Blog</a>
+                    <a href="liens-utiles.html" class="hover:text-[#8a73c4]">Liens utiles</a>
+                    <a href="contact.html" class="hover:text-[#8a73c4]">Contact</a>
                 </div>
 
                 <div class="flex items-center gap-x-3">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="hidden sm:inline-flex items-center px-5 py-2 text-sm font-semibold bg-[#0f3c35] hover:bg-[#0a2c28] text-white rounded-[2.25rem]">
+                       class="hidden sm:inline-flex items-center px-5 py-2 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2.25rem]">
                         Prendre RDV
                     </a>
 
@@ -98,25 +121,25 @@
             <div class="mobile-menu bg-white w-full max-w-[320px] h-full ml-auto shadow-2xl p-6 flex flex-col">
                 <!-- Close button -->
                 <div class="flex justify-end mb-6">
-                    <button id="close-menu" class="text-3xl text-[#5f7a6f]">
+                    <button id="close-menu" class="text-3xl text-[#8a73c4]">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
 
                 <div class="flex flex-col text-lg font-medium space-y-1">
-                    <a href="index.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Accueil</a>
-                    <a href="le-psychologue.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Prises en charge</a>
-                    <a href="honoraires.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Honoraires</a>
-                    <a href="localisation.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Localisation</a>
-                    <a href="blog.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Blog</a>
-                    <a href="liens-utiles.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Liens utiles</a>
-                    <a href="contact.html" class="py-3 px-3 hover:bg-[#f8f4ef] rounded-2xl">Contact</a>
+                    <a href="index.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Accueil</a>
+                    <a href="le-psychologue.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Prises en charge</a>
+                    <a href="honoraires.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Honoraires</a>
+                    <a href="localisation.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Localisation</a>
+                    <a href="blog.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Blog</a>
+                    <a href="liens-utiles.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Liens utiles</a>
+                    <a href="contact.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Contact</a>
                 </div>
 
                 <div class="mt-auto pt-8 border-t">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="block w-full text-center py-3.5 bg-[#0f3c35] text-white font-semibold rounded-[2.25rem]">
+                       class="block w-full text-center py-3.5 bg-[#6b4fa0] text-white font-semibold rounded-[2.25rem]">
                         Prendre rendez-vous
                     </a>
                 </div>
@@ -126,7 +149,7 @@
 
     <!-- HERO -->
     <header class="hero-bg h-[620px] flex items-center text-white" 
-            style="background: linear-gradient(rgba(15, 60, 53, 0.55), rgba(15, 60, 53, 0.45)), url('https://picsum.photos/id/1018/2000/1200'); background-size: cover; background-position: center;">
+            style="background: linear-gradient(rgba(107, 79, 160, 0.55), rgba(107, 79, 160, 0.45)), url('https://picsum.photos/id/1018/2000/1200'); background-size: cover; background-position: center;">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <div class="max-w-2xl">
                 <div class="inline-flex items-center px-4 py-1 rounded-full bg-white/20 text-sm mb-5">
@@ -138,7 +161,7 @@
                 
                 <div class="mt-8 flex flex-wrap gap-4">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" 
-                       class="px-8 py-4 bg-white text-[#0f3c35] font-semibold rounded-[3rem] text-lg">Prendre rendez-vous</a>
+                       class="px-8 py-4 bg-white text-[#6b4fa0] font-semibold rounded-[3rem] text-lg">Prendre rendez-vous</a>
                     <a href="le-psychologue.html" 
                        class="px-8 py-4 border border-white/70 hover:bg-white/10 text-white font-semibold rounded-[3rem] text-lg">Comprendre le métier</a>
                 </div>
@@ -149,22 +172,22 @@
     <!-- Quick content -->
     <section class="max-w-screen-2xl mx-auto px-6 md:px-8 py-14">
         <div class="grid md:grid-cols-3 gap-6">
-            <a href="le-psychologue.html" class="gentle-card p-6 bg-white border border-[#d4c9b8] rounded-3xl">
+            <a href="le-psychologue.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
                 <div class="font-semibold">Qu’est-ce qu’un psychologue ?</div>
-                <div class="text-sm text-[#5f7a6f] mt-1">Comprendre les différentes professions</div>
+                <div class="text-sm text-[#8a73c4] mt-1">Comprendre les différentes professions</div>
             </a>
-            <a href="prises-en-charge.html" class="gentle-card p-6 bg-white border border-[#d4c9b8] rounded-3xl">
+            <a href="prises-en-charge.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
                 <div class="font-semibold">Prises en charge</div>
-                <div class="text-sm text-[#5f7a6f] mt-1">Pour qui et comment ?</div>
+                <div class="text-sm text-[#8a73c4] mt-1">Pour qui et comment ?</div>
             </a>
-            <a href="blog.html" class="gentle-card p-6 bg-white border border-[#d4c9b8] rounded-3xl">
+            <a href="blog.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
                 <div class="font-semibold">Le blog</div>
-                <div class="text-sm text-[#5f7a6f] mt-1">Témoignages &amp; réflexions</div>
+                <div class="text-sm text-[#8a73c4] mt-1">Témoignages &amp; réflexions</div>
             </a>
         </div>
     </section>
 
-    <footer class="bg-[#0f3c35] text-white/80">
+    <footer class="bg-[#6b4fa0] text-white/80">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-9 text-sm flex flex-col md:flex-row justify-between gap-y-2">
             <div>© 2026 Stéphanie ALIX — Psychologue clinicienne</div>
             <div class="flex gap-x-6">
@@ -182,10 +205,10 @@
                 <button onclick="hideBreathingModal()" class="text-2xl">×</button>
             </div>
             <div class="flex flex-col items-center py-5">
-                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#6b4fa0] rounded-full cursor-pointer flex items-center justify-center">
                     <div class="text-center">
-                        <div id="breath-text" class="font-medium text-xl text-[#0f3c35]">Inspirez</div>
-                        <div id="breath-count" class="text-xs text-[#5f7a6f]">4s</div>
+                        <div id="breath-text" class="font-medium text-xl text-[#6b4fa0]">Inspirez</div>
+                        <div id="breath-count" class="text-xs text-[#8a73c4]">4s</div>
                     </div>
                 </div>
             </div>
@@ -309,6 +332,22 @@
         }
         
         window.onload = init;
+    </script>
+
+    <script>
+    // Mise en évidence automatique de la page courante dans la navigation
+    document.addEventListener('DOMContentLoaded', function () {
+        var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav a[href$=".html"]').forEach(function (a) {
+            if (a.querySelector('img')) return; // ignore le lien du logo
+            var inMobile = !!a.closest('#mobile-menu');
+            a.classList.add(inMobile ? 'mnav-link' : 'nav-link');
+            if ((a.getAttribute('href') || '').toLowerCase() === current) {
+                a.classList.add('nav-active');
+                a.setAttribute('aria-current', 'page');
+            }
+        });
+    });
     </script>
 </body>
 </html>

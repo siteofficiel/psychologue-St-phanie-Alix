@@ -10,91 +10,114 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
-        .nav-glass { background: rgba(248, 244, 239, 0.92); backdrop-filter: blur(20px); }
+        .nav-glass { background: rgba(246, 242, 252, 0.92); backdrop-filter: blur(20px); }
+
+        /* === Navigation interactive (page active mise en évidence) === */
+        .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
+        .nav-link::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: -2px;
+            height: 2px; background: #6b4fa0; border-radius: 2px;
+            transform: scaleX(0); transform-origin: center;
+            transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.nav-active { color: #6b4fa0; font-weight: 600; }
+        .nav-link.nav-active::after { transform: scaleX(1); }
+        .nav-link.nav-active::before {
+            content: ''; position: absolute; left: 50%; top: -10px;
+            width: 5px; height: 5px; margin-left: -2.5px; border-radius: 9999px;
+            background: #6b4fa0;
+        }
+        /* Mobile : page active */
+        .mnav-link { transition: background .2s ease, color .2s ease, box-shadow .2s ease; }
+        .mnav-link.nav-active {
+            background: #efeafa; color: #6b4fa0; font-weight: 600;
+            box-shadow: inset 3px 0 0 #6b4fa0;
+        }
     </style>
 </head>
-<body class="bg-[#f8f4ef] text-[#3f4f4a]">
-    <nav class="sticky top-0 z-50 nav-glass border-b border-[#d4c9b8]">
+<body class="bg-[#f6f2fc] text-[#3a2e55]">
+    <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
             <div class="py-5 flex items-center justify-between">
                 <a href="index.html" class="flex items-center gap-x-3">
                     <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-11 h-11 object-contain">
-                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#5f7a6f]">PSYCHOLOGUE CLINICIENNE</div></div>
+                    <div><div class="font-semibold text-xl">Stéphanie ALIX</div><div class="text-[10px] text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div></div>
                 </a>
                 <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
-                    <a href="index.html" class="text-[#3f4f4a]">Accueil</a>
-                    <a href="le-psychologue.html" class="text-[#3f4f4a]">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="text-[#3f4f4a]">Prises en charge</a>
-                    <a href="honoraires.html" class="text-[#3f4f4a]">Honoraires</a>
-                    <a href="localisation.html" class="text-[#3f4f4a]">Localisation</a>
-                    <a href="blog.html" class="text-[#3f4f4a]">Blog</a>
-                    <a href="liens-utiles.html" class="text-[#3f4f4a]">Liens utiles</a>
-                    <a href="contact.html" class="text-[#3f4f4a]">Contact</a>
+                    <a href="index.html" class="text-[#3a2e55]">Accueil</a>
+                    <a href="le-psychologue.html" class="text-[#3a2e55]">Le psychologue</a>
+                    <a href="prises-en-charge.html" class="text-[#3a2e55]">Prises en charge</a>
+                    <a href="honoraires.html" class="text-[#3a2e55]">Honoraires</a>
+                    <a href="localisation.html" class="text-[#3a2e55]">Localisation</a>
+                    <a href="blog.html" class="text-[#3a2e55]">Blog</a>
+                    <a href="liens-utiles.html" class="text-[#3a2e55]">Liens utiles</a>
+                    <a href="contact.html" class="text-[#3a2e55]">Contact</a>
                 </div>
                 <div class="flex items-center gap-x-3">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#0f3c35] text-white rounded-[2.25rem]">Prendre RDV</a>
-                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#d4c9b8] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
+                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" class="hidden sm:inline-flex px-5 py-2 text-sm font-semibold bg-[#6b4fa0] text-white rounded-[2.25rem]">Prendre RDV</a>
+                    <button onclick="showBreathingModal()" class="px-3 py-2 border border-[#ddd0f0] hover:bg-white rounded-[2rem]"><i class="fas fa-wind"></i></button>
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
-        <h1 class="heading-serif text-[#0f3c35] text-5xl tracking-tighter">Les liens utiles</h1>
+        <h1 class="heading-serif text-[#6b4fa0] text-5xl tracking-tighter">Les liens utiles</h1>
         <p class="mt-2 max-w-md">Ressources officielles et locales qui peuvent vous être utiles.</p>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href="https://sante.gouv.fr/prevention-en-sante/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://sante.gouv.fr/prevention-en-sante/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Ministère de la santé et de la prévention</span>
             </a>
-            <a href="https://www.ameli.fr/cotes-d-armor/assure" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.ameli.fr/cotes-d-armor/assure" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>L’Assurance Maladie – AMELI 22</span>
             </a>
-            <a href="https://www.drogues-info-service.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.drogues-info-service.fr/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Drogues info service</span>
             </a>
-            <a href="https://www.e-cancer.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.e-cancer.fr/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Institut national du cancer</span>
             </a>
-            <a href="https://arretonslesviolences.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://arretonslesviolences.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Arrêtons les violences</span>
             </a>
-            <a href="https://www.dinan.fr/vivre-a-dinan/etre-accompagne/le-ccas/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.dinan.fr/vivre-a-dinan/etre-accompagne/le-ccas/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>CCAS de Dinan</span>
             </a>
-            <a href="https://www.dinan-agglomeration.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.dinan-agglomeration.fr" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>CIAS Dinan Agglo</span>
             </a>
-            <a href="https://www.ml-paysdedinan.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.ml-paysdedinan.fr" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Mission Locale Pays de Dinan</span>
             </a>
-            <a href="https://www.caf.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.caf.fr" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>CAF Côtes d’Armor</span>
             </a>
-            <a href="https://www.gendarmerie.interieur.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.gendarmerie.interieur.gouv.fr" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>Gendarmerie de Dinan</span>
             </a>
-            <a href="http://www.steredenn.org/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="http://www.steredenn.org/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>STEREDENN</span>
             </a>
-            <a href="https://www.nozdeiz.fr/" target="_blank" class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3 hover:border-[#5f7a6f]">
-                <i class="fas fa-globe text-[#5f7a6f]"></i>
+            <a href="https://www.nozdeiz.fr/" target="_blank" class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3 hover:border-[#8a73c4]">
+                <i class="fas fa-globe text-[#8a73c4]"></i>
                 <span>NOZ DEIZ</span>
             </a>
             
-            <div class="gentle-card p-5 border border-[#d4c9b8] rounded-3xl flex items-center gap-3">
-                <i class="fas fa-phone text-[#5f7a6f]"></i>
+            <div class="gentle-card p-5 border border-[#ddd0f0] rounded-3xl flex items-center gap-3">
+                <i class="fas fa-phone text-[#8a73c4]"></i>
                 <div>
                     <div class="font-medium">Soutien Harcèlement</div>
                     <div class="text-2xl font-bold">3018</div>
@@ -103,7 +126,7 @@
         </div>
     </div>
 
-    <footer class="bg-[#0f3c35] text-white/80">
+    <footer class="bg-[#6b4fa0] text-white/80">
         <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
     </footer>
 
@@ -114,7 +137,7 @@
                 <button onclick="hideBreathingModal()" class="text-2xl">×</button>
             </div>
             <div class="flex flex-col items-center py-5">
-                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#0f3c35] rounded-full cursor-pointer flex items-center justify-center">
+                <div id="breath-circle" onclick="startBreathing()" class="w-44 h-44 border-[14px] border-[#6b4fa0] rounded-full cursor-pointer flex items-center justify-center">
                     <div class="text-center"><div id="breath-text" class="font-medium text-xl">Inspirez</div><div id="breath-count" class="text-xs">4s</div></div>
                 </div>
             </div>
@@ -154,6 +177,22 @@
                 if (phase > 6) { clearInterval(breathingInterval); text.textContent = 'Terminé'; setTimeout(() => { text.textContent = 'Inspirez'; count.textContent = '4s'; circle.style.transform = 'scale(1)'; }, 1600); }
             }, 1000);
         }
+    </script>
+
+    <script>
+    // Mise en évidence automatique de la page courante dans la navigation
+    document.addEventListener('DOMContentLoaded', function () {
+        var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        document.querySelectorAll('nav a[href$=".html"]').forEach(function (a) {
+            if (a.querySelector('img')) return; // ignore le lien du logo
+            var inMobile = !!a.closest('#mobile-menu');
+            a.classList.add(inMobile ? 'mnav-link' : 'nav-link');
+            if ((a.getAttribute('href') || '').toLowerCase() === current) {
+                a.classList.add('nav-active');
+                a.setAttribute('aria-current', 'page');
+            }
+        });
+    });
     </script>
 </body>
 </html>

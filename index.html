@@ -2,8 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stéphanie ALIX • Psychologue Clinicienne • Dinan</title>
+    <meta name="description" content="Stéphanie ALIX, psychologue clinicienne et psychothérapeute à Taden, près de Dinan (22). Accompagnement, écoute et soutien psychologique pour adultes, adolescents et enfants.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -70,76 +73,97 @@
             background: #efeafa; color: #6b4fa0; font-weight: 600;
             box-shadow: inset 3px 0 0 #6b4fa0;
         }
+
+        /* === RESPONSIVE / MOBILE PACK === */
+        .hamburger { width:26px; height:18px; position:relative; cursor:pointer; }
+        .hamburger span { display:block; position:absolute; height:2px; width:100%; background:#3a2e55; border-radius:2px; transition:all .3s ease; }
+        .hamburger span:nth-child(1){ top:0; }
+        .hamburger span:nth-child(2){ top:8px; }
+        .hamburger span:nth-child(3){ top:16px; }
+        .hamburger.open span:nth-child(1){ transform:rotate(45deg); top:8px; }
+        .hamburger.open span:nth-child(2){ opacity:0; transform:translateX(-10px); }
+        .hamburger.open span:nth-child(3){ transform:rotate(-45deg); top:8px; }
+        .mobile-panel { transition: transform .42s cubic-bezier(0.32,0.72,0,1); }
+        .mobile-item { opacity:0; transform:translateX(22px); transition:opacity .45s ease, transform .45s ease, background .2s ease, color .2s ease; }
+        .mobile-item.item-in { opacity:1; transform:translateX(0); }
+        .mobile-item:active { transform:scale(0.97); }
+        @media (hover:hover){ .mobile-item:hover{ background:#f6f2fc; color:#6b4fa0; } }
+        .mobile-item.nav-active { background:#efeafa; color:#6b4fa0; box-shadow: inset 3px 0 0 #6b4fa0; }
+        /* Reveal on scroll */
+        .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.revealed { opacity:1; transform:none; }
+        @media (prefers-reduced-motion: reduce){ .reveal,.mobile-item{ opacity:1 !important; transform:none !important; transition:none !important; } }
+        /* === FIN PACK === */
+        /* Bannière cookies */
+        .cookie-banner { opacity:0; transform:translateY(120%); transition:opacity .5s ease, transform .55s cubic-bezier(0.22,1,0.36,1); }
+        .cookie-banner.cookie-show { opacity:1; transform:none; }
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
     <!-- NAV -->
     <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
-            <div class="py-5 flex items-center justify-between">
+        <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 md:px-8">
+            <div class="py-4 md:py-5 flex items-center justify-between">
                 <!-- Logo -->
                 <a href="index.html" class="group flex items-center gap-x-3">
-                    <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105 group-hover:rotate-6">
+                    <img src="logo.png" alt="Psychologie - Écouter Comprendre Accompagner" class="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
                     <div>
-                        <div class="font-semibold text-xl tracking-tight">Stéphanie ALIX</div>
+                        <div class="font-semibold text-lg md:text-xl tracking-tight">Stéphanie ALIX</div>
                         <div class="text-[10px] font-medium text-[#8a73c4]">PSYCHOLOGUE CLINICIENNE</div>
                     </div>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-x-7 text-sm font-medium">
-                    <a href="index.html" class="hover:text-[#8a73c4]">Accueil</a>
-                    <a href="le-psychologue.html" class="hover:text-[#8a73c4]">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="hover:text-[#8a73c4]">Prises en charge</a>
-                    <a href="honoraires.html" class="hover:text-[#8a73c4]">Honoraires</a>
-                    <a href="localisation.html" class="hover:text-[#8a73c4]">Localisation</a>
-                    <a href="blog.html" class="hover:text-[#8a73c4]">Blog</a>
-                    <a href="liens-utiles.html" class="hover:text-[#8a73c4]">Liens utiles</a>
-                    <a href="contact.html" class="hover:text-[#8a73c4]">Contact</a>
+                <div class="hidden md:flex items-center gap-x-6 lg:gap-x-7 text-sm font-medium">
+                    <a href="index.html">Accueil</a>
+                    <a href="le-psychologue.html">Le psychologue</a>
+                    <a href="prises-en-charge.html">Prises en charge</a>
+                    <a href="honoraires.html">Honoraires</a>
+                    <a href="localisation.html">Localisation</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="liens-utiles.html">Liens utiles</a>
+                    <a href="contact.html">Contact</a>
                 </div>
 
-                <div class="flex items-center gap-x-3">
+                <div class="flex items-center gap-x-2 sm:gap-x-3">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="hidden sm:inline-flex items-center px-5 py-2 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2.25rem]">
+                       class="hidden sm:inline-flex items-center px-5 py-2 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2.25rem] transition-colors">
                         Prendre RDV
                     </a>
-
-                    <!-- Improved Hamburger -->
-                    <button id="mobile-btn" class="md:hidden flex items-center justify-center w-10 h-10">
-                        <div class="hamburger" id="hamburger-icon">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
+                    <!-- Hamburger -->
+                    <button id="mobile-btn" aria-label="Ouvrir le menu" class="md:hidden flex items-center justify-center w-10 h-10">
+                        <div class="hamburger" id="hamburger-icon"><span></span><span></span><span></span></div>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Overlay (Improved) -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/60 z-50">
-            <div class="mobile-menu bg-white w-full max-w-[320px] h-full ml-auto shadow-2xl p-6 flex flex-col">
-                <!-- Close button -->
-                <div class="flex justify-end mb-6">
-                    <button id="close-menu" class="text-3xl text-[#8a73c4]">
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60]">
+            <div id="mobile-backdrop" class="absolute inset-0 bg-[#2a1f47]/70 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+            <div id="mobile-panel" class="mobile-panel absolute top-0 right-0 bg-white w-[84%] max-w-[340px] h-full shadow-2xl p-6 flex flex-col translate-x-full">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-x-2">
+                        <img src="logo.png" alt="" class="w-9 h-9 object-contain">
+                        <span class="font-semibold text-[#3a2e55]">Menu</span>
+                    </div>
+                    <button id="close-menu" aria-label="Fermer le menu" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f6f2fc] text-2xl text-[#8a73c4] transition-colors">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-
-                <div class="flex flex-col text-lg font-medium space-y-1">
-                    <a href="index.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Accueil</a>
-                    <a href="le-psychologue.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Le psychologue</a>
-                    <a href="prises-en-charge.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Prises en charge</a>
-                    <a href="honoraires.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Honoraires</a>
-                    <a href="localisation.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Localisation</a>
-                    <a href="blog.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Blog</a>
-                    <a href="liens-utiles.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Liens utiles</a>
-                    <a href="contact.html" class="py-3 px-3 hover:bg-[#f6f2fc] rounded-2xl">Contact</a>
+                <div class="flex flex-col text-lg font-medium space-y-1 text-[#3a2e55]">
+                    <a href="index.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-house w-5 text-center text-[#8a73c4]"></i><span>Accueil</span></a>
+                    <a href="le-psychologue.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-user-doctor w-5 text-center text-[#8a73c4]"></i><span>Le psychologue</span></a>
+                    <a href="prises-en-charge.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-hand-holding-heart w-5 text-center text-[#8a73c4]"></i><span>Prises en charge</span></a>
+                    <a href="honoraires.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-euro-sign w-5 text-center text-[#8a73c4]"></i><span>Honoraires</span></a>
+                    <a href="localisation.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-location-dot w-5 text-center text-[#8a73c4]"></i><span>Localisation</span></a>
+                    <a href="blog.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-feather w-5 text-center text-[#8a73c4]"></i><span>Blog</span></a>
+                    <a href="liens-utiles.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-link w-5 text-center text-[#8a73c4]"></i><span>Liens utiles</span></a>
+                    <a href="contact.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-envelope w-5 text-center text-[#8a73c4]"></i><span>Contact</span></a>
                 </div>
-
-                <div class="mt-auto pt-8 border-t">
+                <div class="mt-auto pt-6 border-t border-[#efeafa]">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="block w-full text-center py-3.5 bg-[#6b4fa0] text-white font-semibold rounded-[2.25rem]">
+                       class="block w-full text-center py-3.5 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[2.25rem] transition-colors">
                         Prendre rendez-vous
                     </a>
                 </div>
@@ -148,22 +172,22 @@
     </nav>
 
     <!-- HERO -->
-    <header class="hero-bg h-[620px] flex items-center text-white" 
+    <header class="hero-bg min-h-[480px] h-[78vh] max-h-[640px] flex items-center text-white" 
             style="background: linear-gradient(rgba(76, 47, 122, 0.55), rgba(107, 79, 160, 0.40)), url('images/lavande.jpg'); background-size: cover; background-position: center;">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 w-full">
             <div class="max-w-2xl">
                 <div class="inline-flex items-center px-4 py-1 rounded-full bg-white/20 text-sm mb-5">
                     <i class="fas fa-map-marker-alt mr-2"></i> Taden • Dinan (22)
                 </div>
                 
-                <h1 class="heading-serif text-7xl lg:text-8xl tracking-[-4px] leading-none">Stéphanie<br>ALIX</h1>
-                <p class="mt-3 text-3xl font-light">Psychologue clinicienne<br>Psychothérapeute</p>
+                <h1 class="heading-serif text-5xl sm:text-7xl lg:text-8xl tracking-[-2px] sm:tracking-[-4px] leading-none">Stéphanie<br>ALIX</h1>
+                <p class="mt-3 text-xl sm:text-3xl font-light">Psychologue clinicienne<br>Psychothérapeute</p>
                 
-                <div class="mt-8 flex flex-wrap gap-4">
+                <div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" 
-                       class="px-8 py-4 bg-white text-[#6b4fa0] font-semibold rounded-[3rem] text-lg">Prendre rendez-vous</a>
+                       class="text-center px-7 sm:px-8 py-4 bg-white text-[#6b4fa0] font-semibold rounded-[3rem] text-base sm:text-lg transition-transform hover:scale-[1.03] active:scale-95">Prendre rendez-vous</a>
                     <a href="le-psychologue.html" 
-                       class="px-8 py-4 border border-white/70 hover:bg-white/10 text-white font-semibold rounded-[3rem] text-lg">Comprendre le métier</a>
+                       class="text-center px-7 sm:px-8 py-4 border border-white/70 hover:bg-white/10 text-white font-semibold rounded-[3rem] text-base sm:text-lg transition">Comprendre le métier</a>
                 </div>
             </div>
         </div>
@@ -204,61 +228,10 @@
             tailwind.config = { theme: { extend: { fontFamily: { 'serif': ['Playfair Display', 'Georgia', 'serif'] } } } };
         }
 
-        // Improved Hamburger Menu
-        function initHamburger() {
-            const btn = document.getElementById('mobile-btn');
-            const menu = document.getElementById('mobile-menu');
-            const hamburger = document.getElementById('hamburger-icon');
-            const closeBtn = document.getElementById('close-menu');
-
-            if (!btn || !menu) return;
-
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-                hamburger.classList.toggle('open');
-            });
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                });
-            }
-
-            // Close when clicking on links
-            const links = menu.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                });
-            });
-
-            // Close when clicking outside the menu panel
-            menu.addEventListener('click', (e) => {
-                if (e.target === menu) {
-                    menu.classList.add('hidden');
-                    hamburger.classList.remove('open');
-                }
-            });
-        }
 
 
         function init() {
             initTailwind();
-            initHamburger();
-            
-            // Keyboard support
-            document.addEventListener('keydown', function(e) {
-                if (e.key === "Escape") {
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        const ham = document.getElementById('hamburger-icon');
-                        if (ham) ham.classList.remove('open');
-                    }
-                }
-            });
         }
         
         window.onload = init;
@@ -278,6 +251,160 @@
             }
         });
     });
+    </script>
+
+    <script>
+    // === Menu mobile animé + animations au défilement ===
+    (function () {
+        function initMobileMenu() {
+            var btn = document.getElementById('mobile-btn');
+            var menu = document.getElementById('mobile-menu');
+            var panel = document.getElementById('mobile-panel');
+            var backdrop = document.getElementById('mobile-backdrop');
+            var closeBtn = document.getElementById('close-menu');
+            var ham = document.getElementById('hamburger-icon');
+            if (!btn || !menu || !panel) return;
+            var items = menu.querySelectorAll('.mobile-item');
+            function open() {
+                menu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(function () {
+                    backdrop.classList.remove('opacity-0');
+                    backdrop.classList.add('opacity-100');
+                    panel.classList.remove('translate-x-full');
+                    if (ham) ham.classList.add('open');
+                    items.forEach(function (it, i) {
+                        it.style.transitionDelay = (90 + i * 55) + 'ms';
+                        it.classList.add('item-in');
+                    });
+                });
+            }
+            function close() {
+                backdrop.classList.add('opacity-0');
+                backdrop.classList.remove('opacity-100');
+                panel.classList.add('translate-x-full');
+                if (ham) ham.classList.remove('open');
+                items.forEach(function (it) { it.style.transitionDelay = '0ms'; it.classList.remove('item-in'); });
+                document.body.style.overflow = '';
+                setTimeout(function () { menu.classList.add('hidden'); }, 380);
+            }
+            btn.addEventListener('click', open);
+            if (closeBtn) closeBtn.addEventListener('click', close);
+            if (backdrop) backdrop.addEventListener('click', close);
+            menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !menu.classList.contains('hidden')) close();
+            });
+        }
+        function initReveal() {
+            var nav = document.querySelector('nav');
+            var footer = document.querySelector('footer');
+            var blocks = [];
+            var n = nav ? nav.nextElementSibling : document.body.firstElementChild;
+            while (n && n !== footer) {
+                if (n.tagName && n.tagName !== 'SCRIPT' && n.tagName !== 'STYLE') blocks.push(n);
+                n = n.nextElementSibling;
+            }
+            var els;
+            if (blocks.length <= 1 && blocks[0]) {
+                els = Array.prototype.slice.call(blocks[0].children);
+            } else {
+                els = blocks;
+            }
+            els = els.filter(function (el) { return el && el.tagName !== 'SCRIPT'; });
+            if (!els.length) return;
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('revealed'); });
+                return;
+            }
+            els.forEach(function (el) { el.classList.add('reveal'); });
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+            els.forEach(function (el) { io.observe(el); });
+        }
+        document.addEventListener('DOMContentLoaded', function () { initMobileMenu(); initReveal(); });
+    })();
+    </script>
+
+    <!-- Bannière cookies -->
+    <div id="cookie-banner" class="cookie-banner hidden fixed bottom-0 inset-x-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
+        <div class="max-w-3xl mx-auto bg-white border border-[#ddd0f0] shadow-2xl rounded-3xl p-5 sm:p-6">
+            <div class="flex items-start gap-x-4">
+                <div class="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#efeafa] items-center justify-center text-[#6b4fa0] text-xl">
+                    <i class="fas fa-cookie-bite"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="font-semibold text-[#3a2e55] flex items-center gap-x-2">
+                        <i class="fas fa-cookie-bite sm:hidden text-[#6b4fa0]"></i> Respect de votre vie privée
+                    </div>
+                    <p class="text-sm text-[#5b5170] mt-1 leading-relaxed">
+                        Ce site utilise des cookies pour améliorer votre expérience de navigation et mesurer l'audience.
+                        Vous pouvez les accepter, les refuser, ou ne garder que l'essentiel. Votre choix est conservé sur cet appareil.
+                    </p>
+                    <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
+                        <button onclick="cookieChoice('all')"
+                            class="order-1 sm:order-3 px-5 py-2.5 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2rem] transition-colors">
+                            Tout accepter
+                        </button>
+                        <button onclick="cookieChoice('essential')"
+                            class="order-2 px-5 py-2.5 text-sm font-semibold bg-[#efeafa] hover:bg-[#e7ddf6] text-[#4c2f7a] rounded-[2rem] transition-colors">
+                            Essentiels uniquement
+                        </button>
+                        <button onclick="cookieChoice('none')"
+                            class="order-3 sm:order-1 px-5 py-2.5 text-sm font-medium text-[#8a73c4] hover:text-[#6b4fa0] hover:bg-[#f6f2fc] rounded-[2rem] transition-colors">
+                            Refuser
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // === Consentement cookies + Google Analytics ===
+    (function () {
+        var KEY = 'cookieConsent_v1';
+        var GA_ID = 'G-XXXXXXXXXX'; // <-- Remplacez par votre identifiant Google Analytics (GA4)
+
+        // Charge Google Analytics uniquement après consentement
+        function loadGoogleAnalytics() {
+            if (window.gaLoaded || !GA_ID || GA_ID === 'G-XXXXXXXXXX') return;
+            window.gaLoaded = true;
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+        }
+
+        window.cookieChoice = function (value) {
+            try { localStorage.setItem(KEY, JSON.stringify({ choice: value, date: new Date().toISOString() })); } catch (e) {}
+            var b = document.getElementById('cookie-banner');
+            if (b) { b.classList.remove('cookie-show'); setTimeout(function () { b.classList.add('hidden'); }, 400); }
+            if (value === 'all') loadGoogleAnalytics();
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            if (saved) {
+                // Choix déjà fait : on relance GA si l'utilisateur avait tout accepté
+                try { if (JSON.parse(saved).choice === 'all') loadGoogleAnalytics(); } catch (e) {}
+                return;
+            }
+            var b = document.getElementById('cookie-banner');
+            if (!b) return;
+            b.classList.remove('hidden');
+            setTimeout(function () { b.classList.add('cookie-show'); }, 600);
+        });
+    })();
     </script>
 </body>
 </html>

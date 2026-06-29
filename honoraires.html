@@ -47,9 +47,10 @@
         .hamburger.open span:nth-child(1){ transform:rotate(45deg); top:8px; }
         .hamburger.open span:nth-child(2){ opacity:0; transform:translateX(-10px); }
         .hamburger.open span:nth-child(3){ transform:rotate(-45deg); top:8px; }
-        .mobile-panel { transition: transform .42s cubic-bezier(0.32,0.72,0,1); }
-        .mobile-item { opacity:0; transform:translateX(22px); transition:opacity .45s ease, transform .45s ease, background .2s ease, color .2s ease; }
-        .mobile-item.item-in { opacity:1; transform:translateX(0); }
+        .mobile-dropdown { transform-origin: top; opacity:0; transform:translateY(-12px); transition:opacity .3s ease, transform .35s cubic-bezier(0.22,1,0.36,1); pointer-events:none; }
+        #mobile-menu.menu-open .mobile-dropdown { opacity:1; transform:translateY(0); pointer-events:auto; }
+        .mobile-item { opacity:0; transform:translateY(8px); transition:opacity .4s ease, transform .4s ease, background .2s ease, color .2s ease; }
+        .mobile-item.item-in { opacity:1; transform:translateY(0); }
         .mobile-item:active { transform:scale(0.97); }
         @media (hover:hover){ .mobile-item:hover{ background:#f6f2fc; color:#6b4fa0; } }
         .mobile-item.nav-active { background:#efeafa; color:#6b4fa0; box-shadow: inset 3px 0 0 #6b4fa0; }
@@ -64,7 +65,7 @@
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
-    <nav class="sticky top-0 z-50 nav-glass border-b border-[#ddd0f0]">
+    <nav class="sticky top-0 z-50 relative nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 md:px-8">
             <div class="py-4 md:py-5 flex items-center justify-between">
                 <!-- Logo -->
@@ -101,32 +102,22 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60]">
-            <div id="mobile-backdrop" class="absolute inset-0 bg-[#2a1f47]/70 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
-            <div id="mobile-panel" class="mobile-panel absolute top-0 right-0 bg-white w-[84%] max-w-[340px] h-full shadow-2xl p-6 flex flex-col translate-x-full">
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-x-2">
-                        <img src="logo.png" alt="" class="w-9 h-9 object-contain">
-                        <span class="font-semibold text-[#3a2e55]">Menu</span>
-                    </div>
-                    <button id="close-menu" aria-label="Fermer le menu" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#f6f2fc] text-2xl text-[#8a73c4] transition-colors">
-                        <i class="fas fa-times"></i>
-                    </button>
+        <!-- Menu déroulant mobile -->
+        <div id="mobile-menu" class="hidden md:hidden fixed top-[var(--nav-h,64px)] inset-x-0 bottom-0 z-[60]" style="background-color:#ffffff;">
+            <div id="mobile-panel" class="mobile-dropdown h-full overflow-y-auto px-4 pt-4 pb-8" style="background-color:#ffffff;">
+                <div class="flex flex-col text-base font-medium text-[#3a2e55]">
+                    <a href="index.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-house w-5 text-center text-[#6b4fa0]"></i><span>Accueil</span></a>
+                    <a href="le-psychologue.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-user-doctor w-5 text-center text-[#6b4fa0]"></i><span>Le psychologue</span></a>
+                    <a href="prises-en-charge.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-hand-holding-heart w-5 text-center text-[#6b4fa0]"></i><span>Prises en charge</span></a>
+                    <a href="honoraires.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-euro-sign w-5 text-center text-[#6b4fa0]"></i><span>Honoraires</span></a>
+                    <a href="localisation.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-location-dot w-5 text-center text-[#6b4fa0]"></i><span>Localisation</span></a>
+                    <a href="blog.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-feather w-5 text-center text-[#6b4fa0]"></i><span>Blog</span></a>
+                    <a href="liens-utiles.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-link w-5 text-center text-[#6b4fa0]"></i><span>Liens utiles</span></a>
+                    <a href="contact.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-envelope w-5 text-center text-[#6b4fa0]"></i><span>Contact</span></a>
                 </div>
-                <div class="flex flex-col text-lg font-medium space-y-1 text-[#3a2e55]">
-                    <a href="index.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-house w-5 text-center text-[#8a73c4]"></i><span>Accueil</span></a>
-                    <a href="le-psychologue.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-user-doctor w-5 text-center text-[#8a73c4]"></i><span>Le psychologue</span></a>
-                    <a href="prises-en-charge.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-hand-holding-heart w-5 text-center text-[#8a73c4]"></i><span>Prises en charge</span></a>
-                    <a href="honoraires.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-euro-sign w-5 text-center text-[#8a73c4]"></i><span>Honoraires</span></a>
-                    <a href="localisation.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-location-dot w-5 text-center text-[#8a73c4]"></i><span>Localisation</span></a>
-                    <a href="blog.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-feather w-5 text-center text-[#8a73c4]"></i><span>Blog</span></a>
-                    <a href="liens-utiles.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-link w-5 text-center text-[#8a73c4]"></i><span>Liens utiles</span></a>
-                    <a href="contact.html" class="mobile-item py-3 px-4 rounded-2xl flex items-center gap-x-3"><i class="fas fa-envelope w-5 text-center text-[#8a73c4]"></i><span>Contact</span></a>
-                </div>
-                <div class="mt-auto pt-6 border-t border-[#efeafa]">
+                <div class="pt-5 mt-4 border-t border-[#efeafa]">
                     <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank"
-                       class="block w-full text-center py-3.5 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[2.25rem] transition-colors">
+                       class="block w-full text-center py-3.5 bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white font-semibold rounded-[2rem] transition-colors">
                         Prendre rendez-vous
                     </a>
                 </div>
@@ -229,41 +220,41 @@
         function initMobileMenu() {
             var btn = document.getElementById('mobile-btn');
             var menu = document.getElementById('mobile-menu');
-            var panel = document.getElementById('mobile-panel');
-            var backdrop = document.getElementById('mobile-backdrop');
-            var closeBtn = document.getElementById('close-menu');
             var ham = document.getElementById('hamburger-icon');
-            if (!btn || !menu || !panel) return;
+            if (!btn || !menu) return;
             var items = menu.querySelectorAll('.mobile-item');
+            var isOpen = false;
+            var nav = document.querySelector('nav');
             function open() {
-                menu.classList.remove('hidden');
+                isOpen = true;
+                if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
                 document.body.style.overflow = 'hidden';
+                menu.classList.remove('hidden');
                 requestAnimationFrame(function () {
-                    backdrop.classList.remove('opacity-0');
-                    backdrop.classList.add('opacity-100');
-                    panel.classList.remove('translate-x-full');
+                    menu.classList.add('menu-open');
                     if (ham) ham.classList.add('open');
                     items.forEach(function (it, i) {
-                        it.style.transitionDelay = (90 + i * 55) + 'ms';
+                        it.style.transitionDelay = (70 + i * 45) + 'ms';
                         it.classList.add('item-in');
                     });
                 });
             }
             function close() {
-                backdrop.classList.add('opacity-0');
-                backdrop.classList.remove('opacity-100');
-                panel.classList.add('translate-x-full');
+                isOpen = false;
+                menu.classList.remove('menu-open');
                 if (ham) ham.classList.remove('open');
-                items.forEach(function (it) { it.style.transitionDelay = '0ms'; it.classList.remove('item-in'); });
                 document.body.style.overflow = '';
-                setTimeout(function () { menu.classList.add('hidden'); }, 380);
+                items.forEach(function (it) { it.style.transitionDelay = '0ms'; it.classList.remove('item-in'); });
+                setTimeout(function () { if (!isOpen) menu.classList.add('hidden'); }, 350);
             }
-            btn.addEventListener('click', open);
-            if (closeBtn) closeBtn.addEventListener('click', close);
-            if (backdrop) backdrop.addEventListener('click', close);
+            function toggle() { isOpen ? close() : open(); }
+            btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
             menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+            document.addEventListener('click', function (e) {
+                if (isOpen && !menu.contains(e.target) && !btn.contains(e.target)) close();
+            });
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && !menu.classList.contains('hidden')) close();
+                if (e.key === 'Escape' && isOpen) close();
             });
         }
         function initReveal() {

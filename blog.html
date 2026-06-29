@@ -49,9 +49,27 @@
         .hamburger.open span:nth-child(1){ transform:rotate(45deg); top:8px; }
         .hamburger.open span:nth-child(2){ opacity:0; transform:translateX(-10px); }
         .hamburger.open span:nth-child(3){ transform:rotate(-45deg); top:8px; }
-        .mobile-dropdown { transform-origin: top; opacity:0; transform:translateY(-12px); transition:opacity .3s ease, transform .35s cubic-bezier(0.22,1,0.36,1); pointer-events:none; }
-        #mobile-menu.menu-open .mobile-dropdown { opacity:1; transform:translateY(0); pointer-events:auto; }
-        .mobile-item { opacity:0; transform:translateY(8px); transition:opacity .4s ease, transform .4s ease, background .2s ease, color .2s ease; }
+        /* Menu déroulant mobile : plein écran sous la barre, totalement opaque (indépendant de Tailwind) */
+        #mobile-menu {
+            position: fixed;
+            top: var(--nav-h, 64px);
+            left: 0; right: 0; bottom: 0;
+            z-index: 60;
+            background: #ffffff;            /* fond opaque garanti */
+            display: none;                  /* caché par défaut */
+        }
+        #mobile-menu.is-visible { display: block; }
+        @media (min-width: 768px){ #mobile-menu, #mobile-menu.is-visible { display: none !important; } }
+        .mobile-dropdown {
+            height: 100%; overflow-y: auto;
+            background: #ffffff;            /* second filet de sécurité opaque */
+            padding: 16px 16px 32px;
+            transform-origin: top; opacity: 0; transform: translateY(-12px);
+            transition: opacity .3s ease, transform .35s cubic-bezier(0.22,1,0.36,1);
+        }
+        #mobile-menu.menu-open .mobile-dropdown { opacity: 1; transform: translateY(0); }
+        .mobile-item { display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:16px; color:#3a2e55; font-weight:500; text-decoration:none;
+            opacity:0; transform:translateY(8px); transition:opacity .4s ease, transform .4s ease, background .2s ease, color .2s ease; }
         .mobile-item.item-in { opacity:1; transform:translateY(0); }
         .mobile-item:active { transform:scale(0.97); }
         @media (hover:hover){ .mobile-item:hover{ background:#f6f2fc; color:#6b4fa0; } }
@@ -105,8 +123,8 @@
         </div>
 
         <!-- Menu déroulant mobile -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-[var(--nav-h,64px)] inset-x-0 bottom-0 z-[60]" style="background-color:#ffffff;">
-            <div id="mobile-panel" class="mobile-dropdown h-full overflow-y-auto px-4 pt-4 pb-8" style="background-color:#ffffff;">
+        <div id="mobile-menu" style="background-color:#ffffff;">
+            <div id="mobile-panel" class="mobile-dropdown" style="background-color:#ffffff;">
                 <div class="flex flex-col text-base font-medium text-[#3a2e55]">
                     <a href="index.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-house w-5 text-center text-[#6b4fa0]"></i><span>Accueil</span></a>
                     <a href="le-psychologue.html" class="mobile-item flex items-center gap-x-3 py-3.5 px-4 rounded-2xl border border-transparent"><i class="fas fa-user-doctor w-5 text-center text-[#6b4fa0]"></i><span>Le psychologue</span></a>
@@ -285,6 +303,7 @@
                 if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
                 document.body.style.overflow = 'hidden';
                 menu.classList.remove('hidden');
+                menu.classList.add('is-visible');
                 requestAnimationFrame(function () {
                     menu.classList.add('menu-open');
                     if (ham) ham.classList.add('open');
@@ -300,7 +319,7 @@
                 if (ham) ham.classList.remove('open');
                 document.body.style.overflow = '';
                 items.forEach(function (it) { it.style.transitionDelay = '0ms'; it.classList.remove('item-in'); });
-                setTimeout(function () { if (!isOpen) menu.classList.add('hidden'); }, 350);
+                setTimeout(function () { if (!isOpen) { menu.classList.remove('is-visible'); menu.classList.add('hidden'); } }, 350);
             }
             function toggle() { isOpen ? close() : open(); }
             btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });

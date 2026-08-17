@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7EKBFZ3NX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-G7EKBFZ3NX');
+    </script>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -113,9 +121,6 @@
         .reveal.revealed { opacity:1; transform:none; }
         @media (prefers-reduced-motion: reduce){ .reveal,.mobile-item{ opacity:1 !important; transform:none !important; transition:none !important; } }
         /* === FIN PACK === */
-        /* Bannière cookies */
-        .cookie-banner { opacity:0; transform:translateY(120%); transition:opacity .5s ease, transform .55s cubic-bezier(0.22,1,0.36,1); }
-        .cookie-banner.cookie-show { opacity:1; transform:none; }
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
@@ -347,82 +352,5 @@
     })();
     </script>
 
-    <!-- Bannière cookies -->
-    <div id="cookie-banner" class="cookie-banner hidden fixed bottom-0 inset-x-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
-        <div class="max-w-3xl mx-auto bg-white border border-[#ddd0f0] shadow-2xl rounded-3xl p-5 sm:p-6">
-            <div class="flex items-start gap-x-4">
-                <div class="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#efeafa] items-center justify-center text-[#6b4fa0] text-xl">
-                    <i class="fas fa-cookie-bite"></i>
-                </div>
-                <div class="flex-1">
-                    <div class="font-semibold text-[#3a2e55] flex items-center gap-x-2">
-                        <i class="fas fa-cookie-bite sm:hidden text-[#6b4fa0]"></i> Respect de votre vie privée
-                    </div>
-                    <p class="text-sm text-[#5b5170] mt-1 leading-relaxed">
-                        Ce site utilise des cookies pour améliorer votre expérience de navigation et mesurer l'audience.
-                        Vous pouvez les accepter, les refuser, ou ne garder que l'essentiel. Votre choix est conservé sur cet appareil.
-                    </p>
-                    <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
-                        <button onclick="cookieChoice('all')"
-                            class="order-1 sm:order-3 px-5 py-2.5 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2rem] transition-colors">
-                            Tout accepter
-                        </button>
-                        <button onclick="cookieChoice('essential')"
-                            class="order-2 px-5 py-2.5 text-sm font-semibold bg-[#efeafa] hover:bg-[#e7ddf6] text-[#4c2f7a] rounded-[2rem] transition-colors">
-                            Essentiels uniquement
-                        </button>
-                        <button onclick="cookieChoice('none')"
-                            class="order-3 sm:order-1 px-5 py-2.5 text-sm font-medium text-[#8a73c4] hover:text-[#6b4fa0] hover:bg-[#f6f2fc] rounded-[2rem] transition-colors">
-                            Refuser
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    // === Consentement cookies + Google Analytics ===
-    (function () {
-        var KEY = 'cookieConsent_v1';
-        var GA_ID = 'G-XXXXXXXXXX'; // <-- Remplacez par votre identifiant Google Analytics (GA4)
-
-        // Charge Google Analytics uniquement après consentement
-        function loadGoogleAnalytics() {
-            if (window.gaLoaded || !GA_ID || GA_ID === 'G-XXXXXXXXXX') return;
-            window.gaLoaded = true;
-            var s = document.createElement('script');
-            s.async = true;
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-            document.head.appendChild(s);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', GA_ID);
-        }
-
-        window.cookieChoice = function (value) {
-            try { localStorage.setItem(KEY, JSON.stringify({ choice: value, date: new Date().toISOString() })); } catch (e) {}
-            var b = document.getElementById('cookie-banner');
-            if (b) { b.classList.remove('cookie-show'); setTimeout(function () { b.classList.add('hidden'); }, 400); }
-            if (value === 'all') loadGoogleAnalytics();
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var saved = null;
-            try { saved = localStorage.getItem(KEY); } catch (e) {}
-            if (saved) {
-                // Choix déjà fait : on relance GA si l'utilisateur avait tout accepté
-                try { if (JSON.parse(saved).choice === 'all') loadGoogleAnalytics(); } catch (e) {}
-                return;
-            }
-            var b = document.getElementById('cookie-banner');
-            if (!b) return;
-            b.classList.remove('hidden');
-            setTimeout(function () { b.classList.add('cookie-show'); }, 600);
-        });
-    })();
-    </script>
 </body>
 </html>

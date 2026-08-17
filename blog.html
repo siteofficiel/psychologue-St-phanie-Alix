@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7EKBFZ3NX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-G7EKBFZ3NX');
+    </script>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
@@ -79,11 +87,6 @@
         .reveal.revealed { opacity:1; transform:none; }
         @media (prefers-reduced-motion: reduce){ .reveal,.mobile-item{ opacity:1 !important; transform:none !important; transition:none !important; } }
         /* === FIN PACK === */
-        /* Bannière cookies */
-        .cookie-banner { opacity:0; transform:translateY(120%); transition:opacity .5s ease, transform .55s cubic-bezier(0.22,1,0.36,1); }
-        .cookie-banner.cookie-show { opacity:1; transform:none; }
-        /* Espacement des paragraphes dans la fenêtre de lecture d'article */
-        #modal-content p + p, #modal-content p + blockquote, #modal-content blockquote + p, #modal-content blockquote + blockquote { margin-top: 1rem; }
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
@@ -160,10 +163,56 @@
             </div>
         </div>
 
-        <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <noscript>
-            <p class="text-center text-[#8a73c4] py-10">Activez JavaScript pour afficher les articles du blog.</p>
-        </noscript>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Article cards with images -->
+            <div onclick="openArticle(0)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1005/600/220" alt="Anxiété" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Anxiété</span>
+                        <span class="text-xs text-[#8a73c4]">12 jan 2026</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« J’ai enfin cessé de me battre contre mon anxiété »</h3>
+                    <p class="mt-2 text-sm text-[#8a73c4]">Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#8a73c4]">7 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="openArticle(1)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1016/600/220" alt="Deuil" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Deuil</span>
+                        <span class="text-xs text-[#8a73c4]">3 déc 2025</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« Le deuil ne disparaît pas, il change de forme »</h3>
+                    <p class="mt-2 text-sm text-[#8a73c4]">Thomas, 52 ans, partage son chemin après la perte de sa mère.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#8a73c4]">9 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="openArticle(2)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
+                <img src="https://picsum.photos/id/1011/600/220" alt="Adolescents" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Adolescents</span>
+                        <span class="text-xs text-[#8a73c4]">21 nov 2025</span>
+                    </div>
+                    <h3 class="font-semibold mt-3 text-xl">« Mon ado ne parle plus à la maison »</h3>
+                    <p class="mt-2 text-sm text-[#8a73c4]">Le témoignage d’une mère et de sa fille de 15 ans.</p>
+                    <div class="mt-4 text-xs flex items-center justify-between">
+                        <span class="font-medium">Lire l’article</span>
+                        <span class="text-[#8a73c4]">6 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Article Modal -->
@@ -184,13 +233,7 @@
     </div>
 
     <footer class="bg-[#6b4fa0] text-white/80">
-        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-            <span>© 2026 Stéphanie ALIX</span>
-            <span class="hidden sm:inline text-white/40">•</span>
-            <a href="admin.html" class="text-white/60 hover:text-white transition-colors inline-flex items-center gap-x-1.5">
-                <i class="fas fa-lock text-xs"></i> Espace administrateur
-            </a>
-        </div>
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
     
         <div class="border-t border-white/20">
             <div class="max-w-screen-2xl mx-auto px-6 py-3 text-center text-xs text-white/70">
@@ -201,142 +244,34 @@
 
 
     <script>
-        /* ============================================================
-           BLOG — articles gérés via l'espace administrateur (admin.html)
-           Sources des articles (par ordre de priorité) :
-             1. localStorage (articles ajoutés/modifiés dans admin.html sur ce navigateur)
-             2. articles.json publié à côté de blog.html sur l'hébergement
-             3. Articles d'origine intégrés dans cette page (secours)
-           ============================================================ */
-        const BLOG_STORAGE_KEY = 'sa_blog_articles_v1';
-
-        const DEFAULT_ARTICLES = [
+        const articles = [
             {
-                id: 'art-orig-1', status: 'published',
-                category: 'Anxiété', date: '2026-01-12', minutes: 7,
-                image: 'https://picsum.photos/id/1005/600/220',
-                title: '« J’ai enfin cessé de me battre contre mon anxiété »',
-                excerpt: 'Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.',
-                content: 'Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.\n\n« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »\n\nAujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.'
+                category: "Anxiété",
+                date: "12 janvier 2026 • 7 min",
+                title: "« J’ai enfin cessé de me battre contre mon anxiété »",
+                content: `<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class="mt-4">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class="mt-4">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>`
             },
             {
-                id: 'art-orig-2', status: 'published',
-                category: 'Deuil', date: '2025-12-03', minutes: 9,
-                image: 'https://picsum.photos/id/1016/600/220',
-                title: '« Le deuil ne disparaît pas, il change de forme »',
-                excerpt: 'Thomas, 52 ans, partage son chemin après la perte de sa mère.',
-                content: 'Thomas, 52 ans, est venu consulter après la mort de sa mère.\n\n« Je fonctionnais, mais à l’intérieur, tout était figé. »\n\nAujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.'
+                category: "Deuil",
+                date: "3 décembre 2025 • 9 min",
+                title: "« Le deuil ne disparaît pas, il change de forme »",
+                content: `<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class="mt-4">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class="mt-4">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>`
             },
             {
-                id: 'art-orig-3', status: 'published',
-                category: 'Adolescents', date: '2025-11-21', minutes: 6,
-                image: 'https://picsum.photos/id/1011/600/220',
-                title: '« Mon ado ne parle plus à la maison »',
-                excerpt: 'Le témoignage d’une mère et de sa fille de 15 ans.',
-                content: 'Sophie, 47 ans, et sa fille Emma, 15 ans.\n\nLe travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.'
+                category: "Adolescents",
+                date: "21 novembre 2025 • 6 min",
+                title: "« Mon ado ne parle plus à la maison »",
+                content: `<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class="mt-4">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>`
             }
         ];
 
-        /* ---------- Formatage des dates (français) ---------- */
-        const MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
-        const MOIS_S = ['janv','févr','mars','avr','mai','juin','juil','août','sept','oct','nov','déc'];
-        function fmtFull(iso) { const p = (iso || '').split('-'); if (p.length !== 3) return iso || ''; return parseInt(p[2], 10) + ' ' + MOIS[parseInt(p[1], 10) - 1] + ' ' + p[0]; }
-        function fmtShort(iso) { const p = (iso || '').split('-'); if (p.length !== 3) return iso || ''; return parseInt(p[2], 10) + ' ' + MOIS_S[parseInt(p[1], 10) - 1] + ' ' + p[0]; }
-
-        /* ---------- Petits utilitaires ---------- */
-        function escHtml(t) { return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-        function inlineFormat(t) {
-            return escHtml(t)
-                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
-        }
-        /* Rend le contenu brut (paragraphes séparés par une ligne vide, **gras**, *italique*, > citation) */
-        function renderRichContent(text) {
-            const blocks = String(text || '').split(/\n{2,}/).map(function (b) { return b.trim(); }).filter(Boolean);
-            return blocks.map(function (block) {
-                const lines = block.split('\n').map(function (l) { return l.trim(); });
-                if (lines[0] && lines[0][0] === '>') {
-                    const inner = lines.map(function (l) { return l.replace(/^>\s?/, ''); }).join('<br>');
-                    return '<blockquote class="border-l-4 border-[#c9b8e8] pl-4 italic text-[#5b5170]">' + inlineFormat(inner) + '</blockquote>';
-                }
-                return '<p>' + inlineFormat(lines.join('<br>')) + '</p>';
-            }).join('');
-        }
-        function publishedOnly(list) { return (list || []).filter(function (a) { return a.status !== 'draft'; }); }
-        function sortByDate(list) {
-            return (list || []).slice().sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
-        }
-
-        /* ---------- Stockage local (avec repli mémoire si indisponible) ---------- */
-        const blogMem = { v: null };
-        function readLocalArticles() {
-            try {
-                const raw = localStorage.getItem(BLOG_STORAGE_KEY);
-                if (raw) {
-                    const parsed = JSON.parse(raw);
-                    if (Array.isArray(parsed)) return parsed;
-                }
-            } catch (e) { /* stockage indisponible : on ignore */ }
-            return blogMem.v;
-        }
-
-        /* ---------- Rendu de la grille ---------- */
-        function articleCard(a) {
-            const img = a.image
-                ? '<img src="' + escHtml(a.image) + '" alt="' + escHtml(a.title) + '" class="w-full h-48 object-cover" loading="lazy">'
-                : '<div class="w-full h-48 bg-gradient-to-br from-[#efeafa] to-[#e7ddf6] flex items-center justify-center text-4xl text-[#8a73c4]"><i class="fas fa-feather"></i></div>';
-            return '<div onclick="openArticle(\'' + escHtml(a.id) + '\')" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">' +
-                img +
-                '<div class="p-6">' +
-                    '<div class="flex justify-between items-center">' +
-                        '<span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">' + escHtml(a.category || 'Article') + '</span>' +
-                        '<span class="text-xs text-[#8a73c4]">' + escHtml(fmtShort(a.date)) + '</span>' +
-                    '</div>' +
-                    '<h3 class="font-semibold mt-3 text-xl">' + escHtml(a.title) + '</h3>' +
-                    '<p class="mt-2 text-sm text-[#8a73c4]">' + escHtml(a.excerpt) + '</p>' +
-                    '<div class="mt-4 text-xs flex items-center justify-between">' +
-                        '<span class="font-medium">Lire l’article</span>' +
-                        '<span class="text-[#8a73c4]">' + (a.minutes ? (a.minutes + ' min') : '') + '</span>' +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-        }
-
-        function renderArticles(list) {
-            const grid = document.getElementById('articles-grid');
-            if (!grid) return;
-            const pub = sortByDate(publishedOnly(list));
-            if (!pub.length) {
-                grid.innerHTML = '<div class="col-span-full text-center py-14 border border-dashed border-[#ddd0f0] rounded-3xl">' +
-                    '<div class="text-3xl text-[#8a73c4] mb-3"><i class="fas fa-feather"></i></div>' +
-                    '<p class="text-[#8a73c4]">Aucun article publié pour le moment. Revenez bientôt !</p></div>';
-                return;
-            }
-            grid.innerHTML = pub.map(articleCard).join('');
-        }
-
-        /* ---------- Lecture des articles ---------- */
-        let blogArticles = readLocalArticles();
-        if (!Array.isArray(blogArticles) || !blogArticles.length) blogArticles = DEFAULT_ARTICLES;
-        renderArticles(blogArticles);
-
-        /* Si rien dans ce navigateur, on essaie le fichier articles.json publié sur l'hébergement */
-        if (!readLocalArticles() && location.protocol.indexOf('http') === 0) {
-            fetch('articles.json', { cache: 'no-store' })
-                .then(function (r) { return r.ok ? r.json() : null; })
-                .then(function (data) { if (Array.isArray(data) && data.length) { blogArticles = data; renderArticles(data); } })
-                .catch(function () { /* fichier absent : on garde les articles d'origine */ });
-        }
-
-        /* ---------- Fenêtre de lecture ---------- */
-        function openArticle(id) {
-            const article = (blogArticles || []).filter(function (a) { return a.id === id; })[0];
-            if (!article) return;
+        function openArticle(index) {
+            const article = articles[index];
             const modal = document.getElementById('article-modal');
-            document.getElementById('modal-category').innerHTML = escHtml(article.category || 'Article');
-            document.getElementById('modal-date').innerHTML = escHtml(fmtFull(article.date)) + (article.minutes ? ' • ' + article.minutes + ' min' : '');
-            document.getElementById('modal-title').innerHTML = escHtml(article.title);
-            document.getElementById('modal-content').innerHTML = renderRichContent(article.content);
+            document.getElementById('modal-category').innerHTML = article.category;
+            document.getElementById('modal-date').innerHTML = article.date;
+            document.getElementById('modal-title').innerHTML = article.title;
+            document.getElementById('modal-content').innerHTML = article.content;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -347,9 +282,6 @@
             modal.classList.add('hidden');
         }
 
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeArticleModal();
-        });
     </script>
 
     <script>
@@ -445,82 +377,5 @@
     })();
     </script>
 
-    <!-- Bannière cookies -->
-    <div id="cookie-banner" class="cookie-banner hidden fixed bottom-0 inset-x-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
-        <div class="max-w-3xl mx-auto bg-white border border-[#ddd0f0] shadow-2xl rounded-3xl p-5 sm:p-6">
-            <div class="flex items-start gap-x-4">
-                <div class="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#efeafa] items-center justify-center text-[#6b4fa0] text-xl">
-                    <i class="fas fa-cookie-bite"></i>
-                </div>
-                <div class="flex-1">
-                    <div class="font-semibold text-[#3a2e55] flex items-center gap-x-2">
-                        <i class="fas fa-cookie-bite sm:hidden text-[#6b4fa0]"></i> Respect de votre vie privée
-                    </div>
-                    <p class="text-sm text-[#5b5170] mt-1 leading-relaxed">
-                        Ce site utilise des cookies pour améliorer votre expérience de navigation et mesurer l'audience.
-                        Vous pouvez les accepter, les refuser, ou ne garder que l'essentiel. Votre choix est conservé sur cet appareil.
-                    </p>
-                    <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
-                        <button onclick="cookieChoice('all')"
-                            class="order-1 sm:order-3 px-5 py-2.5 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2rem] transition-colors">
-                            Tout accepter
-                        </button>
-                        <button onclick="cookieChoice('essential')"
-                            class="order-2 px-5 py-2.5 text-sm font-semibold bg-[#efeafa] hover:bg-[#e7ddf6] text-[#4c2f7a] rounded-[2rem] transition-colors">
-                            Essentiels uniquement
-                        </button>
-                        <button onclick="cookieChoice('none')"
-                            class="order-3 sm:order-1 px-5 py-2.5 text-sm font-medium text-[#8a73c4] hover:text-[#6b4fa0] hover:bg-[#f6f2fc] rounded-[2rem] transition-colors">
-                            Refuser
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    // === Consentement cookies + Google Analytics ===
-    (function () {
-        var KEY = 'cookieConsent_v1';
-        var GA_ID = 'G-XXXXXXXXXX'; // <-- Remplacez par votre identifiant Google Analytics (GA4)
-
-        // Charge Google Analytics uniquement après consentement
-        function loadGoogleAnalytics() {
-            if (window.gaLoaded || !GA_ID || GA_ID === 'G-XXXXXXXXXX') return;
-            window.gaLoaded = true;
-            var s = document.createElement('script');
-            s.async = true;
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-            document.head.appendChild(s);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', GA_ID);
-        }
-
-        window.cookieChoice = function (value) {
-            try { localStorage.setItem(KEY, JSON.stringify({ choice: value, date: new Date().toISOString() })); } catch (e) {}
-            var b = document.getElementById('cookie-banner');
-            if (b) { b.classList.remove('cookie-show'); setTimeout(function () { b.classList.add('hidden'); }, 400); }
-            if (value === 'all') loadGoogleAnalytics();
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var saved = null;
-            try { saved = localStorage.getItem(KEY); } catch (e) {}
-            if (saved) {
-                // Choix déjà fait : on relance GA si l'utilisateur avait tout accepté
-                try { if (JSON.parse(saved).choice === 'all') loadGoogleAnalytics(); } catch (e) {}
-                return;
-            }
-            var b = document.getElementById('cookie-banner');
-            if (!b) return;
-            b.classList.remove('hidden');
-            setTimeout(function () { b.classList.add('cookie-show'); }, 600);
-        });
-    })();
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2b950fb9c54e200',t:'MTc4NjgwODYyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>

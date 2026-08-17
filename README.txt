@@ -13,10 +13,26 @@ CONTENU DE L'ARCHIVE
 - contact.html .............. Contact
 - logo.png .................. Logo (aussi utilisé comme favicon)
 - images/lavande.jpg ........ Image de fond de la page d'accueil
+                             (image de remplacement fournie : si vous
+                             avez votre photo d'origine, remplacez-la
+                             en conservant le même nom de fichier)
 
-IMPORTANT : conservez le dossier "images" à côté des fichiers .html,
-sinon le fond de la page d'accueil ne s'affichera pas.
+GOOGLE ANALYTICS (ACTIVÉ)
+--------------------------
+Le suivi Google Analytics (GA4) est intégré et ACTIF sur les 8 pages,
+avec l'identifiant de mesure :
 
+    G-G7EKBFZ3NX
+
+Le script est placé en haut de la balise <head> de chaque page,
+conformément à la recommandation officielle de Google. Les statistiques
+apparaîtront sur https://analytics.google.com quelques heures après
+les premières visites.
+
+ATTENTION (RGPD) : l'ancien bandeau de consentement cookies a été
+retiré ; Google Analytics se charge donc automatiquement pour tous les
+visiteurs. Pour un cabinet de psychologue, un bandeau de consentement
+est recommandé — demandez-nous de le réintégrer si vous le souhaitez.
 
 COMMENT PUBLIER LE SITE
 -----------------------
@@ -26,28 +42,3 @@ COMMENT PUBLIER LE SITE
    de votre hébergeur : OVH, Hostinger, Netlify, GitHub Pages, etc.).
 3. La page d'accueil doit s'appeler "index.html" : elle s'ouvrira
    automatiquement quand on visite votre nom de domaine.
-
-
-GOOGLE ANALYTICS (à finaliser)
-------------------------------
-Le suivi Google Analytics (GA4) est déjà intégré, mais avec un
-identifiant fictif. Pour l'activer :
-
-1. Créez une propriété sur https://analytics.google.com
-2. Récupérez votre identifiant de mesure au format : G-XXXXXXXXXX
-3. Dans CHACUN des 8 fichiers .html, remplacez la ligne :
-       var GA_ID = 'G-XXXXXXXXXX';
-   par votre véritable identifiant, par exemple :
-       var GA_ID = 'G-ABC1234567';
-
-Note : conforme RGPD — Google Analytics ne se charge QUE si le visiteur
-clique sur "Tout accepter" dans le bandeau cookies.
-
-
-NOTES TECHNIQUES
-----------------
-- Le site est responsive (ordinateur, tablette, mobile).
-- Tailwind CSS, les polices Google et les icônes Font Awesome sont
-  chargés depuis Internet (CDN) : une connexion est nécessaire pour
-  un affichage complet. Le site fonctionne sans installation.
-- Bouton "Prendre RDV" : pointe vers la page Maiia du cabinet.

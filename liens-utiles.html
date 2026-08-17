@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — chargé avec consentement RGPD -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7EKBFZ3NX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        // Par défaut : refus du dépôt de cookies (RGPD). Le bandeau cookies permet d'accepter.
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
         gtag('js', new Date());
         gtag('config', 'G-G7EKBFZ3NX');
     </script>
@@ -222,6 +229,11 @@
                 Site réalisé par <a href="https://siteofficiel.github.io/WebandGo/index.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-white hover:underline underline-offset-4">Web et Go</a>
             </div>
         </div>
+            <div class="max-w-screen-2xl mx-auto px-6 pb-5 text-center text-xs text-white/60 flex flex-wrap justify-center gap-x-4 gap-y-1">
+                <a href="mentions-legales.html" class="hover:text-white transition-colors">Mentions légales</a>
+                <a href="politique-de-confidentialite.html" class="hover:text-white transition-colors">Politique de confidentialité</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Gestion des cookies</a>
+            </div>
     </footer>
 
 
@@ -318,5 +330,61 @@
     })();
     </script>
 
+<!-- Bandeau cookies (RGPD) -->
+<div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
+    <div class="max-w-3xl mx-auto bg-white border border-[#ddd0f0] shadow-2xl rounded-3xl p-5 sm:p-6">
+        <div class="flex items-start gap-x-4">
+            <div class="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#efeafa] items-center justify-center text-[#6b4fa0] text-xl">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-semibold text-[#3a2e55]">Respect de votre vie privée</div>
+                <p class="text-sm text-[#5b5170] mt-1 leading-relaxed">
+                    Ce site utilise des cookies de mesure d’audience (Google Analytics) pour comprendre comment il est utilisé, uniquement si vous l’acceptez. Aucun cookie publicitaire n’est déposé.
+                    <a href="cookies.html" class="text-[#6b4fa0] underline underline-offset-2">En savoir plus</a>
+                </p>
+                <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
+                    <button onclick="__cookieChoice('all')" class="px-5 py-2.5 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2rem] transition-colors">Tout accepter</button>
+                    <button onclick="__cookieChoice('none')" class="px-5 py-2.5 text-sm font-medium text-[#8a73c4] hover:text-[#6b4fa0] hover:bg-[#f6f2fc] rounded-[2rem] transition-colors">Refuser</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var KEY = 'cookieConsent_v1';
+    function grant() {
+        try {
+            if (window.gtag) {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+        } catch (e) {}
+    }
+    function setChoice(v) {
+        try { localStorage.setItem(KEY, JSON.stringify({ choice: v, date: new Date().toISOString() })); } catch (e) {}
+        var b = document.getElementById('cookie-banner');
+        if (b) b.classList.add('hidden');
+        if (v === 'all') grant();
+    }
+    window.__cookieChoice = setChoice;
+    document.addEventListener('DOMContentLoaded', function () {
+        var saved = null;
+        try { saved = localStorage.getItem(KEY); } catch (e) {}
+        if (saved) {
+            try { if (JSON.parse(saved).choice === 'all') grant(); } catch (e) {}
+            return;
+        }
+        var b = document.getElementById('cookie-banner');
+        if (b) b.classList.remove('hidden');
+    });
+})();
+</script>
 </body>
 </html>

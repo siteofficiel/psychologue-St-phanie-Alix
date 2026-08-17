@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — chargé avec consentement RGPD -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7EKBFZ3NX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        // Par défaut : refus du dépôt de cookies (RGPD). Le bandeau cookies permet d'accepter.
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
         gtag('js', new Date());
         gtag('config', 'G-G7EKBFZ3NX');
     </script>
@@ -195,22 +202,27 @@
                 <a href="#" onclick="openAdmin(); return false;" class="text-white/50 hover:text-white transition-colors" title="Espace administrateur du blog"><i class="fas fa-lock"></i> Espace admin</a>
             </div>
         </div>
+            <div class="max-w-screen-2xl mx-auto px-6 pb-5 text-center text-xs text-white/60 flex flex-wrap justify-center gap-x-4 gap-y-1">
+                <a href="mentions-legales.html" class="hover:text-white transition-colors">Mentions légales</a>
+                <a href="politique-de-confidentialite.html" class="hover:text-white transition-colors">Politique de confidentialité</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Gestion des cookies</a>
+            </div>
     </footer>
 
 
     <script>
         // =====================================================================
-        //  BLOG + ESPACE ADMIN — tout est intégré dans cette même page :
-        //  aucun fichier séparé, donc aucune page « introuvable ».
+        //  BLOG + ESPACE ADMIN — intégré dans cette même page.
         //
-        //  • Les articles sont chargés : d'abord depuis la sauvegarde locale
-        //    de l'administrateur (si elle existe), sinon depuis articles.json,
-        //    sinon depuis les 3 articles de démonstration ci-dessous.
+        //  • Les articles sont lus depuis articles.json (sur le serveur).
+        //    Si le fichier est introuvable (page ouverte sans serveur), on
+        //    affiche les 3 articles de démonstration ci-dessous.
         //  • L'espace admin (bouton en bas de page) s'ouvre dans la page.
+        //    Les ajouts/suppressions sont enregistrés SUR LE SERVEUR via
+        //    admin-api.php : ils sont donc visibles par TOUS les visiteurs,
+        //    sans rien renvoyer sur l'hébergement.
         // =====================================================================
-        var ARTICLES_KEY  = 'blog_articles_v1';        // localStorage : articles gérés par l'admin
-        var ADMIN_SESSION = 'blog_admin_session_v1';    // sessionStorage : '1' si connecté
-        var ADMIN_HASH    = '969adcf36a2553fd9de7d8a1fb16c38016aa5e6b540bd5e07e4c84582dc2da56'; // empreinte du mot de passe
+        var ADMIN_SESSION = 'blog_admin_session_v1';
 
         var FALLBACK_ARTICLES = [
             {
@@ -247,7 +259,6 @@
 
         var currentArticles = [];
 
-        // ------- Utilitaires -------
         function escapeHtml(s) {
             return String(s === undefined || s === null ? '' : s)
                 .replace(/&/g, '&amp;')
@@ -257,77 +268,8 @@
                 .replace(/'/g, '&#39;');
         }
 
-        function sha256(ascii) {
-            function rightRotate(value, amount) { return (value >>> amount) | (value << (32 - amount)); }
-            var mathPow = Math.pow;
-            var maxWord = mathPow(2, 32);
-            var lengthProperty = 'length';
-            var i, j;
-            var result = '';
-            var words = [];
-            var asciiBitLength = ascii[lengthProperty] * 8;
-            var hash = sha256.h = sha256.h || [];
-            var k = sha256.k = sha256.k || [];
-            var primeCounter = k[lengthProperty];
-            var isComposite = {};
-            for (var candidate = 2; primeCounter < 64; candidate++) {
-                if (!isComposite[candidate]) {
-                    for (i = 0; i < 313; i += candidate) { isComposite[i] = candidate; }
-                    hash[primeCounter] = (mathPow(candidate, .5) * maxWord) | 0;
-                    k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
-                }
-            }
-            ascii += '\x80';
-            while (ascii[lengthProperty] % 64 - 56) ascii += '\x00';
-            for (i = 0; i < ascii[lengthProperty]; i++) {
-                j = ascii.charCodeAt(i);
-                if (j >> 8) return;
-                words[i >> 2] |= j << ((3 - i) % 4) * 8;
-            }
-            words[words[lengthProperty]] = ((asciiBitLength / maxWord) | 0);
-            words[words[lengthProperty]] = (asciiBitLength);
-            for (j = 0; j < words[lengthProperty];) {
-                var w = words.slice(j, j += 16);
-                var oldHash = hash;
-                hash = hash.slice(0, 8);
-                for (i = 0; i < 64; i++) {
-                    var w15 = w[i - 15], w2 = w[i - 2];
-                    var a = hash[0], e = hash[4];
-                    var temp1 = hash[7]
-                        + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25))
-                        + ((e & hash[5]) ^ ((~e) & hash[6]))
-                        + k[i]
-                        + (w[i] = (i < 16) ? w[i] : (
-                            w[i - 16]
-                            + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3))
-                            + w[i - 7]
-                            + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))
-                        ) | 0);
-                    var temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22))
-                        + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
-                    hash = [(temp1 + temp2) | 0].concat(hash);
-                    hash[4] = (hash[4] + temp1) | 0;
-                }
-                for (i = 0; i < 8; i++) { hash[i] = (hash[i] + oldHash[i]) | 0; }
-            }
-            for (i = 0; i < 8; i++) {
-                for (j = 3; j + 1; j--) {
-                    var b = (hash[i] >> (j * 8)) & 255;
-                    result += ((b < 16) ? 0 : '') + b.toString(16);
-                }
-            }
-            return result;
-        }
-
-        // ------- Chargement des articles -------
+        // ------- Chargement des articles (depuis le serveur) -------
         function loadArticles(cb) {
-            try {
-                var local = localStorage.getItem(ARTICLES_KEY);
-                if (local) {
-                    var arr = JSON.parse(local);
-                    if (arr && arr.length) { currentArticles = arr; cb(); return; }
-                }
-            } catch (e) {}
             fetch('articles.json', { cache: 'no-store' })
                 .then(function (r) { return r.json(); })
                 .then(function (d) { currentArticles = d.articles || d; cb(); })
@@ -411,24 +353,6 @@
             document.getElementById('admin-logout-btn').classList.remove('hidden');
             renderAdminList();
         }
-        function adminLogin() {
-            var p = document.getElementById('admin-password').value;
-            if (sha256(p) === ADMIN_HASH) {
-                try { sessionStorage.setItem(ADMIN_SESSION, '1'); } catch (e) {}
-                document.getElementById('admin-password').value = '';
-                showAdminDashboard();
-                flashAdmin('Connexion réussie. Bienvenue !', 'ok');
-            } else {
-                var err = document.getElementById('admin-error');
-                err.textContent = 'Mot de passe incorrect.';
-                err.classList.remove('hidden');
-            }
-        }
-        function adminLogout() {
-            try { sessionStorage.removeItem(ADMIN_SESSION); } catch (e) {}
-            showAdminLogin();
-            flashAdmin('Vous êtes déconnecté(e).', 'ok');
-        }
         function flashAdmin(msg, type) {
             var f = document.getElementById('admin-flash');
             if (!f) return;
@@ -438,11 +362,54 @@
             clearTimeout(f._t);
             f._t = setTimeout(function () { f.classList.add('hidden'); }, 4500);
         }
+        function postForm(params) {
+            var body = Object.keys(params).map(function (k) {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+            }).join('&');
+            return fetch('admin-api.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: body,
+                credentials: 'same-origin'
+            }).then(function (r) { return r.json(); });
+        }
+        function adminLogin() {
+            var p = document.getElementById('admin-password').value;
+            postForm({ action: 'login', password: p }).then(function (res) {
+                if (res && res.ok) {
+                    try { sessionStorage.setItem(ADMIN_SESSION, '1'); } catch (e) {}
+                    document.getElementById('admin-password').value = '';
+                    showAdminDashboard();
+                    flashAdmin('Connexion réussie. Bienvenue !', 'ok');
+                } else {
+                    var err = document.getElementById('admin-error');
+                    err.textContent = (res && res.error) || 'Mot de passe incorrect.';
+                    err.classList.remove('hidden');
+                }
+            }).catch(function () {
+                var err = document.getElementById('admin-error');
+                err.textContent = 'Impossible de joindre le serveur (hébergement PHP requis).';
+                err.classList.remove('hidden');
+            });
+        }
+        function adminLogout() {
+            postForm({ action: 'logout' }).catch(function () {}).finally(function () {
+                try { sessionStorage.removeItem(ADMIN_SESSION); } catch (e) {}
+                showAdminLogin();
+            });
+        }
+        function refreshAfterChange(msg) {
+            loadArticles(function () {
+                renderArticles(currentArticles);
+                renderAdminList();
+                flashAdmin(msg, 'ok');
+            });
+        }
         function adminAdd() {
             var title = document.getElementById('af-title').value.trim();
             if (!title) { flashAdmin('Le titre est obligatoire.', 'err'); return; }
-            var a = {
-                id: Date.now(),
+            postForm({
+                action: 'add',
                 category: document.getElementById('af-category').value.trim(),
                 date: document.getElementById('af-date').value.trim(),
                 readTime: document.getElementById('af-readtime').value.trim(),
@@ -450,32 +417,34 @@
                 excerpt: document.getElementById('af-excerpt').value.trim(),
                 image: document.getElementById('af-image').value.trim(),
                 content: document.getElementById('af-content').value
-            };
-            currentArticles.unshift(a);
-            saveArticles();
-            renderArticles(currentArticles);
-            renderAdminList();
-            ['af-title', 'af-category', 'af-date', 'af-readtime', 'af-excerpt', 'af-image', 'af-content'].forEach(function (id) {
-                document.getElementById(id).value = '';
-            });
-            flashAdmin('Article ajouté : « ' + title + ' ».', 'ok');
+            }).then(function (res) {
+                if (res && res.ok) {
+                    ['af-title', 'af-category', 'af-date', 'af-readtime', 'af-excerpt', 'af-image', 'af-content'].forEach(function (id) {
+                        document.getElementById(id).value = '';
+                    });
+                    refreshAfterChange('Article ajouté : « ' + title + ' ».');
+                } else if (res && res.error === 'auth') {
+                    try { sessionStorage.removeItem(ADMIN_SESSION); } catch (e) {}
+                    showAdminLogin();
+                    flashAdmin('Session expirée, reconnectez-vous.', 'err');
+                } else {
+                    flashAdmin((res && res.error) || 'Erreur lors de l’ajout.', 'err');
+                }
+            }).catch(function () { flashAdmin('Erreur réseau.', 'err'); });
         }
         function adminDelete(id) {
             if (!window.confirm('Supprimer définitivement cet article ?')) return;
-            currentArticles = currentArticles.filter(function (a) { return a.id !== id; });
-            saveArticles();
-            renderArticles(currentArticles);
-            renderAdminList();
-            flashAdmin('Article supprimé.', 'ok');
-        }
-        function saveArticles() {
-            try {
-                localStorage.setItem(ARTICLES_KEY, JSON.stringify(currentArticles));
-                return true;
-            } catch (e) {
-                flashAdmin('Attention : sauvegarde locale indisponible (les modifications seront perdues au rechargement).', 'err');
-                return false;
-            }
+            postForm({ action: 'delete', id: id }).then(function (res) {
+                if (res && res.ok) {
+                    refreshAfterChange('Article supprimé.');
+                } else if (res && res.error === 'auth') {
+                    try { sessionStorage.removeItem(ADMIN_SESSION); } catch (e) {}
+                    showAdminLogin();
+                    flashAdmin('Session expirée, reconnectez-vous.', 'err');
+                } else {
+                    flashAdmin((res && res.error) || 'Erreur lors de la suppression.', 'err');
+                }
+            }).catch(function () { flashAdmin('Erreur réseau.', 'err'); });
         }
         function renderAdminList() {
             var el = document.getElementById('admin-list');
@@ -691,5 +660,61 @@
         </div>
     </div>
 
+<!-- Bandeau cookies (RGPD) -->
+<div id="cookie-banner" class="hidden fixed bottom-0 inset-x-0 z-[80] px-4 pb-4 sm:px-6 sm:pb-6">
+    <div class="max-w-3xl mx-auto bg-white border border-[#ddd0f0] shadow-2xl rounded-3xl p-5 sm:p-6">
+        <div class="flex items-start gap-x-4">
+            <div class="hidden sm:flex shrink-0 w-12 h-12 rounded-2xl bg-[#efeafa] items-center justify-center text-[#6b4fa0] text-xl">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+            <div class="flex-1">
+                <div class="font-semibold text-[#3a2e55]">Respect de votre vie privée</div>
+                <p class="text-sm text-[#5b5170] mt-1 leading-relaxed">
+                    Ce site utilise des cookies de mesure d’audience (Google Analytics) pour comprendre comment il est utilisé, uniquement si vous l’acceptez. Aucun cookie publicitaire n’est déposé.
+                    <a href="cookies.html" class="text-[#6b4fa0] underline underline-offset-2">En savoir plus</a>
+                </p>
+                <div class="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center">
+                    <button onclick="__cookieChoice('all')" class="px-5 py-2.5 text-sm font-semibold bg-[#6b4fa0] hover:bg-[#4c2f7a] text-white rounded-[2rem] transition-colors">Tout accepter</button>
+                    <button onclick="__cookieChoice('none')" class="px-5 py-2.5 text-sm font-medium text-[#8a73c4] hover:text-[#6b4fa0] hover:bg-[#f6f2fc] rounded-[2rem] transition-colors">Refuser</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var KEY = 'cookieConsent_v1';
+    function grant() {
+        try {
+            if (window.gtag) {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+        } catch (e) {}
+    }
+    function setChoice(v) {
+        try { localStorage.setItem(KEY, JSON.stringify({ choice: v, date: new Date().toISOString() })); } catch (e) {}
+        var b = document.getElementById('cookie-banner');
+        if (b) b.classList.add('hidden');
+        if (v === 'all') grant();
+    }
+    window.__cookieChoice = setChoice;
+    document.addEventListener('DOMContentLoaded', function () {
+        var saved = null;
+        try { saved = localStorage.getItem(KEY); } catch (e) {}
+        if (saved) {
+            try { if (JSON.parse(saved).choice === 'all') grant(); } catch (e) {}
+            return;
+        }
+        var b = document.getElementById('cookie-banner');
+        if (b) b.classList.remove('hidden');
+    });
+})();
+</script>
 </body>
 </html>

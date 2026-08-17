@@ -20,51 +20,15 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stéphanie ALIX • Psychologue Clinicienne • Dinan</title>
-    <meta name="description" content="Stéphanie ALIX, psychologue clinicienne et psychothérapeute à Taden, près de Dinan (22). Accompagnement, écoute et soutien psychologique pour adultes, adolescents et enfants.">
+    <title>Mon Soutien Psy — Informations • Stéphanie ALIX</title>
+    <meta name="description" content="Informations réglementaires sur le dispositif Mon soutien psy — Stéphanie ALIX, psychologue clinicienne à Taden, près de Dinan (22).">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
         body { font-family: 'Inter', system_ui, sans-serif; }
         .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.04em; }
-        .nav-glass { background: rgba(246, 242, 252, 0.95); backdrop-filter: blur(20px); }
-        
-        /* Hamburger animation */
-        .hamburger {
-            width: 28px;
-            height: 20px;
-            position: relative;
-            cursor: pointer;
-        }
-        .hamburger span {
-            display: block;
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: #3a2e55;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2) { top: 9px; }
-        .hamburger span:nth-child(3) { top: 18px; }
-        
-        .hamburger.open span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 9px;
-        }
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.open span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 9px;
-        }
-
-        .mobile-menu {
-            transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-        }
+        .nav-glass { background: rgba(246, 242, 252, 0.92); backdrop-filter: blur(20px); }
 
         /* === Navigation interactive (page active mise en évidence) === */
         .nav-link { position: relative; padding-bottom: 4px; transition: color .25s ease; }
@@ -131,7 +95,6 @@
     </style>
 </head>
 <body class="bg-[#f6f2fc] text-[#3a2e55]">
-    <!-- NAV -->
     <nav class="sticky top-0 z-50 relative nav-glass border-b border-[#ddd0f0]">
         <div class="max-w-screen-2xl mx-auto px-5 sm:px-6 md:px-8">
             <div class="py-4 md:py-5 flex items-center justify-between">
@@ -194,54 +157,38 @@
             </div>
         </div>
 
-    <!-- HERO -->
-    <header class="hero-bg min-h-[480px] h-[78vh] max-h-[640px] flex items-center text-white" 
-            style="background: linear-gradient(rgba(76, 47, 122, 0.55), rgba(107, 79, 160, 0.40)), url('images/lavande.jpg'); background-size: cover; background-position: center;">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 w-full">
-            <div class="max-w-2xl">
-                <div class="inline-flex items-center px-4 py-1 rounded-full bg-white/20 text-sm mb-5">
-                    <i class="fas fa-map-marker-alt mr-2"></i> Taden • Dinan (22)
-                </div>
-                
-                <h1 class="heading-serif text-3xl sm:text-4xl lg:text-5xl tracking-[-1px] sm:tracking-[-2px] leading-none">Stéphanie ALIX</h1>
-                <p class="mt-3 text-xl sm:text-3xl font-light">Psychologue clinicienne<br>Psychothérapeute</p>
-                
-                <div class="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                    <a href="https://www.maiia.com/psychologue/22100-taden/alix-stephanie" target="_blank" 
-                       class="text-center px-7 sm:px-8 py-4 bg-white text-[#6b4fa0] font-semibold rounded-[3rem] text-base sm:text-lg transition-transform hover:scale-[1.03] active:scale-95">Prendre rendez-vous</a>
-                    <a href="le-psychologue.html" 
-                       class="text-center px-7 sm:px-8 py-4 border border-white/70 hover:bg-white/10 text-white font-semibold rounded-[3rem] text-base sm:text-lg transition">Comprendre le métier</a>
-                </div>
-            </div>
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-8 pt-10 pb-16">
+        <h1 class="heading-serif text-[#6b4fa0] text-3xl sm:text-5xl tracking-tighter">Dispositif « Mon Soutien Psy »</h1>
+        <p class="mt-2 max-w-2xl text-[#5b5170]">Conditions de prise en charge, tarif et remboursement des séances.</p>
+        <div class="mt-8 max-w-3xl space-y-6">
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Présentation du dispositif</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>« Mon soutien psy » est un dispositif officiel de l’Assurance Maladie. Il permet, sous conditions, la prise en charge de séances d’accompagnement psychologique réalisées par un psychologue conventionné.</p></div>
         </div>
-    </header>
-
-    <!-- Quick content -->
-    <section class="max-w-screen-2xl mx-auto px-6 md:px-8 py-14">
-        <div class="grid md:grid-cols-3 gap-6">
-            <a href="le-psychologue.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Qu’est-ce qu’un psychologue ?</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Comprendre les différentes professions</div>
-            </a>
-            <a href="prises-en-charge.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Prises en charge</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Pour qui et comment ?</div>
-            </a>
-            <a href="blog.html" class="gentle-card p-6 bg-white border border-[#ddd0f0] rounded-3xl">
-                <div class="font-semibold">Le blog</div>
-                <div class="text-sm text-[#8a73c4] mt-1">Témoignages &amp; réflexions</div>
-            </a>
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Qui peut en bénéficier ?</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>Le dispositif s’adresse à toute personne (enfant dès 3 ans, adolescent, adulte) présentant des troubles légers à modérés (anxiété, déprime, difficultés relationnelles, etc.). Il n’est pas cumulable avec un suivi déjà en cours par un psychiatre.</p></div>
         </div>
-    </section>
-
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Nombre de séances prises en charge</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>Dans les conditions en vigueur : jusqu’à <strong>12 séances par année civile</strong>, réparties en un entretien d’évaluation puis des séances de suivi.</p></div>
+        </div>
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Tarif et remboursement</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>Le tarif de la séance est fixé par l’Assurance Maladie à <strong>50 €</strong>, sans dépassement d’honoraires.</p><p>La prise en charge est assurée à hauteur de 60 % par l’Assurance Maladie et de 40 % par la complémentaire santé (mutuelle responsable) ; le reste à charge peut être nul selon votre contrat. Les bénéficiaires de la Complémentaire Santé Solidaire (CSS) peuvent être pris en charge intégralement.</p></div>
+        </div>
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Comment y accéder ?</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>Vous pouvez prendre rendez-vous directement auprès d’un psychologue conventionné (dont le cabinet), ou être orienté(e) par votre médecin ou votre sage-femme.</p></div>
+        </div>
+<div class="bg-white border border-[#ddd0f0] rounded-3xl p-6 sm:p-8">
+            <h2 class="font-semibold text-xl text-[#3a2e55]">Source officielle</h2>
+            <div class="mt-3 text-[15px] leading-relaxed text-[#5b5170] space-y-3"><p>Les conditions ci-dessus sont celles en vigueur à la date de rédaction de cette page et peuvent évoluer. Seule la documentation officielle fait foi :</p><p><a href="https://www.ameli.fr/cotes-d-armor/assure/remboursements/rembourse/remboursement-seance-psychologue-mon-soutien-psy" target="_blank" rel="noopener noreferrer" class="text-[#6b4fa0] underline underline-offset-2">Consulter les informations officielles sur ameli.fr</a></p></div>
+        </div>
+        </div>
+    </div>
     <footer class="bg-[#6b4fa0] text-white/80">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-8 py-9 text-sm flex flex-col md:flex-row justify-between gap-y-2">
-            <div>© 2026 Stéphanie ALIX — Psychologue clinicienne</div>
-            <div class="flex gap-x-6">
-                <a href="liens-utiles.html" class="hover:text-white">Liens utiles</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
-            </div>
-        </div>
+        <div class="max-w-screen-2xl mx-auto px-6 py-8 text-sm">© 2026 Stéphanie ALIX</div>
     
         <div class="border-t border-white/20">
             <div class="max-w-screen-2xl mx-auto px-6 py-3 text-center text-xs text-white/70">
@@ -256,22 +203,7 @@
     </footer>
 
 
-    <script>
-        // Tailwind
-        function initTailwind() {
-            tailwind.config = { theme: { extend: { fontFamily: { 'serif': ['Playfair Display', 'Georgia', 'serif'] } } } };
-        }
-
-
-
-        function init() {
-            initTailwind();
-        }
-        
-        window.onload = init;
-    </script>
-
-    <script>
+<script>
     // Mise en évidence automatique de la page courante dans la navigation
     document.addEventListener('DOMContentLoaded', function () {
         var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();

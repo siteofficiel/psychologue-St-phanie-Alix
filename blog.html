@@ -163,57 +163,10 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Article cards with images -->
-            <div onclick="openArticle(0)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1005/600/220" alt="Anxiété" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Anxiété</span>
-                        <span class="text-xs text-[#8a73c4]">12 jan 2026</span>
-                    </div>
-                    <h3 class="font-semibold mt-3 text-xl">« J’ai enfin cessé de me battre contre mon anxiété »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">7 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div onclick="openArticle(1)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1016/600/220" alt="Deuil" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Deuil</span>
-                        <span class="text-xs text-[#8a73c4]">3 déc 2025</span>
-                    </div>
-                    <h3 class="font-semibold mt-3 text-xl">« Le deuil ne disparaît pas, il change de forme »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Thomas, 52 ans, partage son chemin après la perte de sa mère.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">9 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div onclick="openArticle(2)" class="blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden">
-                <img src="https://picsum.photos/id/1011/600/220" alt="Adolescents" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-center">
-                        <span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">Adolescents</span>
-                        <span class="text-xs text-[#8a73c4]">21 nov 2025</span>
-                    </div>
-                    <h3 class="font-semibold mt-3 text-xl">« Mon ado ne parle plus à la maison »</h3>
-                    <p class="mt-2 text-sm text-[#8a73c4]">Le témoignage d’une mère et de sa fille de 15 ans.</p>
-                    <div class="mt-4 text-xs flex items-center justify-between">
-                        <span class="font-medium">Lire l’article</span>
-                        <span class="text-[#8a73c4]">6 min</span>
-                    </div>
-                </div>
-            </div>
+        <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Les cartes d’articles sont générées automatiquement depuis articles.json -->
         </div>
-    </div>
+        </div>
 
     <!-- Article Modal -->
     <div id="article-modal" onclick="closeArticleModal()" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[200] p-4">
@@ -244,45 +197,109 @@
 
 
     <script>
-        const articles = [
+        // =====================================================================
+        //  BLOG — Les articles sont chargés depuis articles.json, fichier géré
+        //  par l'espace administrateur : https://votre-site.fr/admin/
+        //  Si le fichier est introuvable (ou en aperçu hors serveur), on
+        //  affiche les 3 articles de démonstration ci-dessous.
+        // =====================================================================
+        var FALLBACK_ARTICLES = [
             {
+                id: 3,
                 category: "Anxiété",
-                date: "12 janvier 2026 • 7 min",
+                date: "12 janvier 2026",
+                readTime: "7 min",
                 title: "« J’ai enfin cessé de me battre contre mon anxiété »",
-                content: `<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class="mt-4">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class="mt-4">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>`
+                excerpt: "Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.",
+                image: "https://picsum.photos/id/1005/600/220",
+                content: "<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class=\"mt-4\">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class=\"mt-4\">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>"
             },
             {
+                id: 2,
                 category: "Deuil",
-                date: "3 décembre 2025 • 9 min",
+                date: "3 décembre 2025",
+                readTime: "9 min",
                 title: "« Le deuil ne disparaît pas, il change de forme »",
-                content: `<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class="mt-4">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class="mt-4">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>`
+                excerpt: "Thomas, 52 ans, partage son chemin après la perte de sa mère.",
+                image: "https://picsum.photos/id/1016/600/220",
+                content: "<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class=\"mt-4\">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class=\"mt-4\">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>"
             },
             {
+                id: 1,
                 category: "Adolescents",
-                date: "21 novembre 2025 • 6 min",
+                date: "21 novembre 2025",
+                readTime: "6 min",
                 title: "« Mon ado ne parle plus à la maison »",
-                content: `<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class="mt-4">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>`
+                excerpt: "Le témoignage d’une mère et de sa fille de 15 ans.",
+                image: "https://picsum.photos/id/1011/600/220",
+                content: "<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class=\"mt-4\">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>"
             }
         ];
 
+        function escapeHtml(s) {
+            return String(s === undefined || s === null ? '' : s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderArticles(list) {
+            window.__articles = list || [];
+            var grid = document.getElementById('articles-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            window.__articles.forEach(function (a, i) {
+                var img = (a.image && String(a.image).trim()) ? String(a.image).trim()
+                          : 'https://picsum.photos/seed/blog' + (a.id || i) + '/600/220';
+                var card = document.createElement('div');
+                card.className = 'blog-card cursor-pointer border border-[#ddd0f0] bg-white rounded-3xl overflow-hidden';
+                card.onclick = (function (idx) { return function () { openArticle(idx); }; })(i);
+                card.innerHTML =
+                    '<img src="' + escapeHtml(img) + '" alt="' + escapeHtml(a.category || 'Article') + '" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src=\'https://picsum.photos/seed/blog' + (a.id || i) + '/600/220\';">' +
+                    '<div class="p-6">' +
+                        '<div class="flex justify-between items-center">' +
+                            '<span class="px-3 py-1 bg-[#e7ddf6] text-xs rounded-full">' + escapeHtml(a.category || '') + '</span>' +
+                            '<span class="text-xs text-[#8a73c4]">' + escapeHtml(a.date || '') + '</span>' +
+                        '</div>' +
+                        '<h3 class="font-semibold mt-3 text-xl">' + escapeHtml(a.title || '') + '</h3>' +
+                        '<p class="mt-2 text-sm text-[#8a73c4]">' + escapeHtml(a.excerpt || '') + '</p>' +
+                        '<div class="mt-4 text-xs flex items-center justify-between">' +
+                            '<span class="font-medium">Lire l’article</span>' +
+                            '<span class="text-[#8a73c4]">' + escapeHtml(a.readTime || '') + '</span>' +
+                        '</div>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+        }
+
         function openArticle(index) {
-            const article = articles[index];
-            const modal = document.getElementById('article-modal');
-            document.getElementById('modal-category').innerHTML = article.category;
-            document.getElementById('modal-date').innerHTML = article.date;
-            document.getElementById('modal-title').innerHTML = article.title;
-            document.getElementById('modal-content').innerHTML = article.content;
+            var list = window.__articles || [];
+            var article = list[index];
+            if (!article) return;
+            var modal = document.getElementById('article-modal');
+            document.getElementById('modal-category').innerHTML = escapeHtml(article.category || '');
+            var d = (article.date || '') + (article.readTime ? ' • ' + article.readTime : '');
+            document.getElementById('modal-date').innerHTML = escapeHtml(d);
+            document.getElementById('modal-title').innerHTML = escapeHtml(article.title || '');
+            document.getElementById('modal-content').innerHTML = article.content || '';
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
 
         function closeArticleModal() {
-            const modal = document.getElementById('article-modal');
+            var modal = document.getElementById('article-modal');
             modal.classList.remove('flex');
             modal.classList.add('hidden');
         }
 
+        fetch('articles.json', { cache: 'no-store' })
+            .then(function (r) { return r.json(); })
+            .then(function (d) { renderArticles(d.articles || d); })
+            .catch(function () { renderArticles(FALLBACK_ARTICLES); });
     </script>
+
 
     <script>
     // Mise en évidence automatique de la page courante dans la navigation

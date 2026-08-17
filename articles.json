@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "id": 3,
+      "category": "Anxiété",
+      "date": "12 janvier 2026",
+      "readTime": "7 min",
+      "title": "« J’ai enfin cessé de me battre contre mon anxiété »",
+      "excerpt": "Marie, 34 ans, raconte comment elle a appris à cohabiter avec son anxiété.",
+      "image": "https://picsum.photos/id/1005/600/220",
+      "content": "<p>Marie, 34 ans, consultait pour une anxiété qui l’empêchait de dormir et de profiter de sa vie quotidienne.</p><p class=\"mt-4\">« Je passais mon temps à lutter contre mes pensées. Stéphanie m’a aidée à comprendre que je pouvais coexister avec elle sans qu’elle prenne toute la place. »</p><p class=\"mt-4\">Aujourd’hui, elle dit avoir retrouvé du calme et de la liberté intérieure.</p>"
+    },
+    {
+      "id": 2,
+      "category": "Deuil",
+      "date": "3 décembre 2025",
+      "readTime": "9 min",
+      "title": "« Le deuil ne disparaît pas, il change de forme »",
+      "excerpt": "Thomas, 52 ans, partage son chemin après la perte de sa mère.",
+      "image": "https://picsum.photos/id/1016/600/220",
+      "content": "<p>Thomas, 52 ans, est venu consulter après la mort de sa mère.</p><p class=\"mt-4\">« Je fonctionnais, mais à l’intérieur, tout était figé. »</p><p class=\"mt-4\">Aujourd’hui, le deuil est toujours là, mais il ne m’empêche plus de vivre.</p>"
+    },
+    {
+      "id": 1,
+      "category": "Adolescents",
+      "date": "21 novembre 2025",
+      "readTime": "6 min",
+      "title": "« Mon ado ne parle plus à la maison »",
+      "excerpt": "Le témoignage d’une mère et de sa fille de 15 ans.",
+      "image": "https://picsum.photos/id/1011/600/220",
+      "content": "<p>Sophie, 47 ans, et sa fille Emma, 15 ans.</p><p class=\"mt-4\">Le travail a permis à Emma de mettre des mots sur ce qu’elle vivait et à Sophie de comprendre ce qui se jouait derrière le silence.</p>"
+    }
+  ]
+}
